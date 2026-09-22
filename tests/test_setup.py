@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 
 import setup
-from mouse_style import Controller, ControlError, write_json
+from pointer_feel import Controller, ControlError, write_json
 from test_controller import FakeHyprland, WIN
 
 
@@ -19,12 +19,12 @@ class Backend(FakeHyprland):
     def __init__(self, home):
         super().__init__()
         self.plugin = home / ".local/lib/hyprland/plugins/windows-pointer-linux.so"
-        self.mac_plugin = self.plugin.with_name("mouse-style-mac.so")
+        self.mac_plugin = self.plugin.with_name("pointer-feel-mac.so")
         self.fail_profile = None
 
     def run(self, *args, json_output=False):
         if args[:2] == ("plugin", "list"):
-            name = {"win": "windows-pointer-linux", "mac": "mouse-style-mac"}.get(self.current["profile"])
+            name = {"win": "windows-pointer-linux", "mac": "pointer-feel-mac"}.get(self.current["profile"])
             return [{"name": name}] if name else []
         if args[:2] == ("plugin", "unload"):
             self.current["profile"] = "omarchy"
@@ -121,7 +121,7 @@ class SetupTests(unittest.TestCase):
         self.assertEqual(self.builds, 1)
         self.assertFalse(any("/usr/bin/pacman" in cmd for cmd in self.commands))
         self.assertEqual((self.home / ".config/hypr/input.lua").read_text().count(setup.INPUT_ROUTE), 1)
-        self.assertEqual((self.home / ".config/hypr/autostart.lua").read_text().count("mouse-style restore"), 1)
+        self.assertEqual((self.home / ".config/hypr/autostart.lua").read_text().count("pointer-feel restore"), 1)
 
     def test_module_failure_rolls_back_binaries_configuration_and_new_files(self):
         old = self.backend.plugin.read_bytes()
@@ -215,7 +215,7 @@ class SetupTests(unittest.TestCase):
             write_json(path, data)
 
         with patch.object(self.backend, "apply", side_effect=apply_with_polls), \
-                patch("mouse_style.write_json", side_effect=write_with_poll), self.controller.lock():
+                patch("pointer_feel.write_json", side_effect=write_with_poll), self.controller.lock():
             for profile in ("omarchy", "win", "mac", "win", "omarchy", "mac"):
                 trial = self.controller.preview(profile, spawn=False)
                 observe("trial " + profile)
@@ -317,7 +317,7 @@ class SetupTests(unittest.TestCase):
         with patch("builtins.print"):
             self.installer.uninstall(no_restart=True)
         self.assertEqual(file.read_text(), "-- Personal input\n\n-- Added later\n")
-        self.assertNotIn("mouse-style restore", (file.parent / "autostart.lua").read_text())
+        self.assertNotIn("pointer-feel restore", (file.parent / "autostart.lua").read_text())
         self.assertIn("my-app", (file.parent / "autostart.lua").read_text())
         self.assertFalse(self.backend.plugin.exists())
         self.assertFalse(self.backend.mac_plugin.exists())

@@ -20,7 +20,7 @@ Ui.KeyboardPanel {
             width: parent.width
             spacing: Style.space(12)
             Text {
-                text: "Set up Mouse Style"
+                text: "Set up Pointer Feel"
                 color: Color.foreground
                 font.family: root.fontStyle.family
                 font.pixelSize: root.fontStyle.subtitle

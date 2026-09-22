@@ -19,7 +19,7 @@ def main():
     manifest = json.loads((ROOT / "manifest.json").read_text())
     version = manifest["version"]
     cmake = (ROOT / "CMakeLists.txt").read_text()
-    assert re.search(r"project\(omarchy_mouse_style VERSION " + re.escape(version) + r"\b", cmake)
+    assert re.search(r"project\(omarchy_pointer_feel VERSION " + re.escape(version) + r"\b", cmake)
     assert manifest["license"] == "GPL-2.0-or-later"
     for path in manifest["entryPoints"].values():
         assert (ROOT / path).is_file(), path
@@ -37,13 +37,13 @@ def main():
     width, height = struct.unpack(">II", preview[16:24])
     assert 0 < width * height <= 40_000_000 and len(preview) <= 50_000_000
     subprocess.run([sys.executable, str(ROOT / "tools/package.py")], check=True)
-    archive = ROOT / "build/dist" / f"omarchy-mouse-style-{version}.tar.gz"
+    archive = ROOT / "build/dist" / f"omarchy-pointer-feel-{version}.tar.gz"
     expected = hashlib.sha256(archive.read_bytes()).hexdigest()
     assert archive.with_name(archive.name + ".sha256").read_text().split()[0] == expected
-    with tempfile.TemporaryDirectory(prefix="mouse-style-release-") as temp:
+    with tempfile.TemporaryDirectory(prefix="pointer-feel-release-") as temp:
         with tarfile.open(archive) as package:
             package.extractall(temp, filter="data")
-        extracted = Path(temp) / f"omarchy-mouse-style-{version}"
+        extracted = Path(temp) / f"omarchy-pointer-feel-{version}"
         assert source_revision(extracted) == source_revision(ROOT)
         for relative in bundle_files(ROOT):
             assert (extracted / relative).read_bytes() == (ROOT / relative).read_bytes(), relative

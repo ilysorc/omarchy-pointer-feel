@@ -17,19 +17,19 @@ import subprocess
 import sys
 import tempfile
 
-from mouse_style import (Controller, ControlError, MAC_DEFAULT, WINDOWS_DEFAULT,
+from pointer_feel import (Controller, ControlError, MAC_DEFAULT, WINDOWS_DEFAULT,
                          atomic_write, migrate_config, read_json, write_json)
 
 ROOT = Path(__file__).resolve().parent
-PLUGIN_ID = "ilysorc.mouse-style"
+PLUGIN_ID = "ilysorc.pointer-feel"
 PACKAGES = ("python", "git", "coreutils", "gcc", "make", "cmake", "pkgconf", "polkit")
-MODULES = ("windows-pointer-linux.so", "mouse-style-mac.so")
+MODULES = ("windows-pointer-linux.so", "pointer-feel-mac.so")
 SUPPORTED = ("0.56.2",)
-INPUT_MARKER = '-- Mouse Style preferences (managed by the bar panel).\n'
-INPUT_ROUTE = 'dofile(os.getenv("HOME") .. "/.config/hypr/mouse-style.lua")'
-START_MARKER = '-- Restore the saved Mouse Style profile.\n'
+INPUT_MARKER = '-- Pointer Feel preferences (managed by the bar panel).\n'
+INPUT_ROUTE = 'dofile(os.getenv("HOME") .. "/.config/hypr/pointer-feel.lua")'
+START_MARKER = '-- Restore the saved Pointer Feel profile.\n'
 BUNDLE = ("manifest.json", "FlowIcon.qml", "FlowButton.qml", "ProfileHeader.qml", "BarWidget.qml", "Panel.qml", "PointerState.qml",
-          "SetupState.qml", "SetupPanel.qml", "mouse_style.py", "setup.py", "install.sh",
+          "SetupState.qml", "SetupPanel.qml", "pointer_feel.py", "setup.py", "install.sh",
           "CMakeLists.txt", "src", "tools", "scripts", "tests", "vendor", "README.md", "LICENSE", "NOTICE.md", "docs", "preview.png")
 
 
@@ -63,7 +63,7 @@ def input_config(original):
 
 
 def startup_config(original, home):
-    command = f'o.launch_on_start("{home}/.local/bin/mouse-style restore")'
+    command = f'o.launch_on_start("{home}/.local/bin/pointer-feel restore")'
     if command in original:
         return original
     old = r'''(?m)^\s*o\.launch_on_start\(["'](?:[^"'\n]*/)?windows-pointer on["']\)\s*$'''
@@ -105,7 +105,7 @@ class FileTransaction:
     def put(self, path, content, mode=0o644):
         self.remember(path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        fd, temp = tempfile.mkstemp(prefix=".mouse-style-", dir=path.parent)
+        fd, temp = tempfile.mkstemp(prefix=".pointer-feel-", dir=path.parent)
         try:
             with os.fdopen(fd, "wb") as stream:
                 stream.write(content.encode() if isinstance(content, str) else content)
@@ -140,7 +140,7 @@ class Installer:
         self.home = Path(home or Path.home()).resolve()
         self.controller = controller or Controller(self.home)
         self.runner = runner or subprocess.run
-        self.state = self.home / ".local/state/mouse-style"
+        self.state = self.home / ".local/state/pointer-feel"
         self.plugin = self.home / ".config/omarchy/plugins" / PLUGIN_ID
         self.receipt = self.state / "installation.json"
         self.progress_file = self.state / "setup.json"
@@ -166,7 +166,7 @@ class Installer:
             try:
                 fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
-                raise ControlError("Mouse Style setup is already running.")
+                raise ControlError("Pointer Feel setup is already running.")
             yield
 
     def running(self):
@@ -192,7 +192,7 @@ class Installer:
     def status(self):
         running = self.running()
         progress = read_json(self.progress_file) if self.progress_file.exists() else {}
-        ready, reason = False, "Install the required components to finish setting up Mouse Style."
+        ready, reason = False, "Install the required components to finish setting up Pointer Feel."
         try:
             saved = read_json(self.receipt)
             version = self.version()
@@ -207,24 +207,24 @@ class Installer:
                      and all((self.home / name).is_file() and digest(self.home / name) == checksum
                              for name, checksum in saved["artifacts"].items())
                      and INPUT_ROUTE in (self.home / ".config/hypr/input.lua").read_text()
-                     and "mouse-style restore" in (self.home / ".config/hypr/autostart.lua").read_text())
+                     and "pointer-feel restore" in (self.home / ".config/hypr/autostart.lua").read_text())
             if not ready:
                 reason = "Finish setup to install or rebuild the components for this version."
         except (OSError, ValueError, KeyError, ControlError):
             pass
         if running:
-            reason = progress.get("message", "Preparing Mouse Style…")
+            reason = progress.get("message", "Preparing Pointer Feel…")
         elif progress.get("phase") == "error" and not ready:
             reason = progress.get("message", reason)
         elif ready:
-            reason = "Mouse Style is ready."
+            reason = "Pointer Feel is ready."
         return {"ready": ready, "running": running, "message": reason,
                 "interrupted": self.pending.exists()}
 
     def preflight(self):
         for name in ("omarchy", "omarchy-shell", "hyprctl", "pacman"):
             if not shutil.which(name):
-                raise ControlError("Mouse Style requires a running Omarchy desktop on Arch Linux.")
+                raise ControlError("Pointer Feel requires a running Omarchy desktop on Arch Linux.")
         version = self.version()
         if version["version"] not in SUPPORTED:
             raise ControlError(f"Hyprland {version['version']} is not supported by this release. Supported: {', '.join(SUPPORTED)}.")
@@ -275,15 +275,15 @@ class Installer:
     def build(self, version):
         self.check_headers(version)
         self.report("build", "Building Windows and Mac pointer components…")
-        cache = self.home / ".cache/mouse-style/builds"
+        cache = self.home / ".cache/pointer-feel/builds"
         cache.mkdir(parents=True, exist_ok=True)
         output = Path(tempfile.mkdtemp(prefix="build-", dir=cache))
         try:
             self.run(["cmake", "-S", self.root, "-B", output, "-G", "Unix Makefiles",
-                      "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_TESTING=OFF", "-DMOUSE_STYLE_BUILD_PLUGIN=ON"],
+                      "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_TESTING=OFF", "-DPOINTER_FEEL_BUILD_PLUGIN=ON"],
                      timeout=180, capture=False)
             self.run(["cmake", "--build", output, "--parallel", str(min(4, os.cpu_count() or 1)),
-                      "--target", "windows-pointer-linux", "mouse-style-mac"], timeout=900, capture=False)
+                      "--target", "windows-pointer-linux", "pointer-feel-mac"], timeout=900, capture=False)
             for name in MODULES:
                 if not (output / name).is_file() or (output / name).read_bytes()[:4] != b"\x7fELF":
                     raise ControlError(f"Build did not produce a native module: {name}")
@@ -297,7 +297,7 @@ class Installer:
 
     def unload(self):
         binaries = {"windows-pointer-linux": self.controller.backend.plugin,
-                    "mouse-style-mac": self.controller.backend.mac_plugin}
+                    "pointer-feel-mac": self.controller.backend.mac_plugin}
         for item in self.controller.backend.run("plugin", "list", json_output=True):
             if item.get("name") in binaries:
                 self.controller.backend.run("plugin", "unload", str(binaries[item["name"]]))
@@ -371,10 +371,10 @@ class Installer:
                         if (self.plugin / ".git").exists():
                             raise ControlError("This plugin is managed by Git. Update its checkout and run its install.sh instead.")
                         tx.put(destination, (self.root / name).read_bytes(), 0o755 if name.name == "install.sh" else 0o644)
-                launcher = self.home / ".local/bin/mouse-style"
-                tx.put(launcher, '#!/bin/sh\nexec python3 "$HOME/.config/omarchy/plugins/' + PLUGIN_ID + '/mouse_style.py" "$@"\n', 0o755)
+                launcher = self.home / ".local/bin/pointer-feel"
+                tx.put(launcher, '#!/bin/sh\nexec python3 "$HOME/.config/omarchy/plugins/' + PLUGIN_ID + '/pointer_feel.py" "$@"\n', 0o755)
                 artifacts[str(launcher.relative_to(self.home))] = digest(launcher)
-                legacy = self.home / ".local/lib/mouse-style/mouse_style.py"
+                legacy = self.home / ".local/lib/pointer-feel/pointer_feel.py"
                 if legacy.is_file() and legacy.read_text().startswith('#!/usr/bin/env python3\n"""Transactional Windows'):
                     tx.remove(legacy)
                 tx.put(input_path, input_config(original_input))
@@ -428,7 +428,7 @@ class Installer:
                         self.controller.restore()
                 self.run(["omarchy-shell", "shell", "rescanPlugins"])
                 self.run(["omarchy", "plugin", "enable", PLUGIN_ID])
-                self.report("ready", "Mouse Style is already installed and up to date.")
+                self.report("ready", "Pointer Feel is already installed and up to date.")
                 return
             self.install_packages(self.missing_packages())
             build = self.build(version)
@@ -438,7 +438,7 @@ class Installer:
                 shutil.rmtree(build)
             self.run(["omarchy-shell", "shell", "rescanPlugins"])
             self.run(["omarchy", "plugin", "enable", PLUGIN_ID])
-            self.report("ready", f"Mouse Style is ready. Settings preserved. Backup: {backup}")
+            self.report("ready", f"Pointer Feel is ready. Settings preserved. Backup: {backup}")
         if not no_restart:
             self.run(["omarchy", "restart", "shell"])
 
@@ -460,7 +460,7 @@ class Installer:
                     input_path = self.home / ".config/hypr/input.lua"
                     startup_path = self.home / ".config/hypr/autostart.lua"
                     tx.put(input_path, input_path.read_text().replace(INPUT_MARKER, "").replace(INPUT_ROUTE + "\n", ""))
-                    command = f'o.launch_on_start("{self.home}/.local/bin/mouse-style restore")'
+                    command = f'o.launch_on_start("{self.home}/.local/bin/pointer-feel restore")'
                     # Retire the adopted standalone loader as well: uninstall returns
                     # to the user's underlying native configuration, not another hook.
                     tx.put(startup_path, startup_path.read_text().replace(START_MARKER, "").replace(command + "\n", ""))
@@ -468,7 +468,7 @@ class Installer:
                     for name in record["artifacts"]:
                         path = self.home / name
                         if path.exists() and digest(path) != record["artifacts"][name]:
-                            raise ControlError(f"Installed file was changed outside Mouse Style; preserved: {path}")
+                            raise ControlError(f"Installed file was changed outside Pointer Feel; preserved: {path}")
                         tx.remove(path)
                     tx.remove(self.receipt)
                     self.controller.backend.run("reload")
@@ -483,7 +483,7 @@ class Installer:
                     self.pending.unlink(missing_ok=True)
                     raise
             self.run(["omarchy", "plugin", "remove", PLUGIN_ID, "--yes"])
-            self.report("removed", "Mouse Style removed; native input restored. Preferences and backups retained. Shared system packages retained.")
+            self.report("removed", "Pointer Feel removed; native input restored. Preferences and backups retained. Shared system packages retained.")
         if not no_restart:
             self.run(["omarchy", "restart", "shell"])
 
@@ -512,8 +512,8 @@ def main():
             raise ControlError("Run setup as your desktop user, without sudo.")
         if not args.yes:
             if not sys.stdin.isatty():
-                raise ControlError("Start setup from the Mouse Style panel, or run ./install.sh in a terminal.")
-            prompt = "Remove Mouse Style and return to native input?" if args.uninstall else "Install required packages, build pointer components and integrate Mouse Style?"
+                raise ControlError("Start setup from the Pointer Feel panel, or run ./install.sh in a terminal.")
+            prompt = "Remove Pointer Feel and return to native input?" if args.uninstall else "Install required packages, build pointer components and integrate Pointer Feel?"
             if input(prompt + " [y/N] ").lower() not in ("y", "yes"):
                 print("Cancelled.")
                 return 1

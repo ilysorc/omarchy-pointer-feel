@@ -19,14 +19,14 @@ class Installation(unittest.TestCase):
         original = 'o.launch_on_start("my-personal-service")\n'
         result = installer.startup_config(original, Path("/home/tester"))
         self.assertTrue(result.startswith(original))
-        self.assertIn('/home/tester/.local/bin/mouse-style restore', result)
+        self.assertIn('/home/tester/.local/bin/pointer-feel restore', result)
         self.assertEqual(installer.startup_config(result, Path("/home/tester")), result)
 
     def test_adopts_existing_windows_startup_without_duplicate_load(self):
         original = 'o.launch_on_start("/home/tester/.local/bin/windows-pointer on")\n'
         result = installer.startup_config(original, Path("/home/tester"))
         self.assertNotIn('windows-pointer on', result)
-        self.assertEqual(result.count('mouse-style restore'), 1)
+        self.assertEqual(result.count('pointer-feel restore'), 1)
 
     def test_duplicate_startup_owners_are_rejected(self):
         original = 'o.launch_on_start("windows-pointer on")\no.launch_on_start("windows-pointer on")\n'

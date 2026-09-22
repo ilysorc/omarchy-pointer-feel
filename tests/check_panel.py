@@ -2,7 +2,7 @@
 """Exercise actual Panel controls and PointerState against an isolated fake CLI.
 
 Uses real panel/button/slider code with an inert panel surface offscreen;
-never calls real mouse-style or captures desktop input.
+never calls real pointer-feel or captures desktop input.
 QtTest sends mouse/keyboard events into an offscreen window, without desktop input.
 """
 import json
@@ -230,7 +230,7 @@ print(json.dumps(data))
 
 def main():
     source = Path(__file__).resolve().parents[1]
-    with tempfile.TemporaryDirectory(prefix='mouse-style-panel-') as temp:
+    with tempfile.TemporaryDirectory(prefix='pointer-feel-panel-') as temp:
         root = Path(temp)
         for name in ('Panel.qml', 'PointerState.qml', 'ProfileHeader.qml', 'FlowIcon.qml', 'FlowButton.qml'):
             shutil.copyfile(source / name, root / name)
@@ -261,10 +261,10 @@ Item {
 }
 """)
         (root / 'shell.qml').write_text(QML)
-        command = root / 'mouse-style'
+        command = root / 'pointer-feel'
         command.write_text(FAKE)
         command.chmod(0o755)
-        (root / 'mouse-style.json').write_text(json.dumps({
+        (root / 'pointer-feel.json').write_text(json.dumps({
             'ok': True, 'serial': 0, 'commands': [], 'profile': 'win',
             'preview': None, 'windows': {'speed': 10, 'epp': True},
             'available': ['win', 'mac', 'omarchy'],
@@ -280,7 +280,7 @@ Item {
         if result.returncode or 'PANEL PASS' not in output or 'FAIL!' in output:
             print(f'Quickshell exit code: {result.returncode}\n{output}')
             return 1
-        data = json.loads((root / 'mouse-style.json').read_text())
+        data = json.loads((root / 'pointer-feel.json').read_text())
         edits = [cmd for cmd in data['commands'] if cmd[0] == 'preview']
         assert len(edits) == 15, edits
         assert [cmd[1] for cmd in edits if "--defaults" in cmd] == ["win", "mac", "omarchy"], edits

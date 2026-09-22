@@ -21,7 +21,7 @@ def main():
     compiler = shutil.which("qmllint") or "/usr/lib/qt6/bin/qmllint"
     if not args.shell.is_dir() or not Path(compiler).is_file():
         parser.error("Install Omarchy and Qt's qmllint, or pass --shell to an installed shell tree.")
-    with tempfile.TemporaryDirectory(prefix="mouse-style-qml-") as temp:
+    with tempfile.TemporaryDirectory(prefix="pointer-feel-qml-") as temp:
         directory = Path(temp)
         (directory / "qs").symlink_to(args.shell.resolve(), target_is_directory=True)
         report = directory / "report.json"

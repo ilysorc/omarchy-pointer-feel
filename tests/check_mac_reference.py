@@ -8,7 +8,7 @@ import subprocess
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--binary', type=Path, default=root / 'build/mouse-style-mac-replay')
+parser.add_argument('--binary', type=Path, default=root / 'build/pointer-feel-mac-replay')
 binary = parser.parse_args().binary.resolve()
 checked = 0
 for tracking in range(1, 11):

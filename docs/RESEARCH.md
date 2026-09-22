@@ -1,4 +1,4 @@
-# Mouse Style research
+# Pointer Feel research
 
 Checked on 2026-09-20. Current scope: Omarchy / Mac / Win on Omarchy/Hyprland.
 The initial Custom candidate was removed from product scope in 0.3.2.

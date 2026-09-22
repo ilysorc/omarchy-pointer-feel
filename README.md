@@ -1,4 +1,4 @@
-# Omarchy Mouse Style
+# Pointer Feel
 
 A vendor-neutral, English-language pointer profile panel for Omarchy/Hyprland.
 
@@ -6,7 +6,7 @@ A vendor-neutral, English-language pointer profile panel for Omarchy/Hyprland.
 verified changes, 15-second trials, Keep/Revert, and session persistence.
 **Mac is an experimental Sequoia measured reference.**
 
-![Mouse Style panel with the Windows profile selected](preview.png)
+![Pointer Feel panel with the Windows profile selected](preview.png)
 
 ## Use the panel
 
@@ -14,7 +14,7 @@ Click the **OMA / MAC / WIN** widget in the right side of the bar.
 The original **Flow** icon (pointer and motion curve) follows the bar's theme
 color and scale, independently of the icon font.
 The panel header shows the active profile's Omarchy, Apple, or Windows logo
-beside **Mouse Style**, including during trials and after reverting.
+beside **Pointer Feel**, including during trials and after reverting.
 **Bar label** offers **Letter** (O / M / W), **Code** (OMA / MAC / WIN), or
 **Hidden** (icon only). Hidden keeps the widget clickable and the profile tooltip
 available; a trial still highlights the icon. Required setup still shows **Setup**.
@@ -96,13 +96,14 @@ the unchanged, pinned Windows engine; no pre-existing Windows checkout is needed
 
 ## Install or update
 
-Add the plugin from its public repository:
+The repository is currently private; installation requires repository access.
+Add the plugin from its repository:
 
 ```sh
-omarchy plugin add https://github.com/ilysorc/omarchy-mouse-style.git --enable
+omarchy plugin add https://github.com/ilysorc/omarchy-pointer-feel.git --enable
 ```
 
-Open **Mouse Style** in the bar and click **Install / Repair**. Omarchy does not
+Open **Pointer Feel** in the bar and click **Install / Repair**. Omarchy does not
 run third-party install hooks automatically, so this first-use action starts the
 complete installer, including any missing system packages and both native modules.
 
@@ -118,7 +119,7 @@ adds the managed Lua/startup integration, verifies all profiles, and restores
 your previously active profile and preferences. Complete any active Keep/Revert
 trial first. Hardware DPI is not touched.
 
-Adding/enabling the repository opens **Set up Mouse Style** when
+Adding/enabling the repository opens **Set up Pointer Feel** when
 components are missing. Click **Install / Repair** to accept package/configuration
 changes. That uses the same installer in a detached worker; closing the panel or
 reloading the shell does not terminate it. The normal controls open only when the
@@ -141,8 +142,8 @@ Useful commands:
 ./install.sh --plan            # read-only environment/package plan
 ./install.sh --status          # read-only readiness JSON
 ./install.sh --yes             # accept setup; OS authentication still applies
-mouse-style setup             # rerun/repair the installed source bundle
-mouse-style uninstall         # fully remove the integration
+pointer-feel setup             # rerun/repair the installed source bundle
+pointer-feel uninstall         # fully remove the integration
 ```
 
 Updates use the same installer. A source or Hyprland ABI change opens setup again;
@@ -157,26 +158,26 @@ During activation, a persistent journal records file backups before changes;
 a failed load rolls back, and the next setup recovers an interrupted transaction.
 The installer holds a lock to prevent concurrent installations. System packages
 successfully installed before a later error stay installed.
-Setup logs from the panel: `~/.local/state/mouse-style/setup.log`.
+Setup logs from the panel: `~/.local/state/pointer-feel/setup.log`.
 
 The installer preserves personal input settings, appends an idempotent managed
 include, and adds a startup restore command. It can adopt the common
 `windows-pointer on` startup helper, irrespective of mouse hardware. Other
 plugin loaders must not load the same backend again after restore.
-Backups are retained under `~/.local/state/mouse-style/install-backups/`.
+Backups are retained under `~/.local/state/pointer-feel/install-backups/`.
 Updating an existing installation briefly restarts the Omarchy shell to clear
 cached QML components; toggling the plugin alone can leave the old panel visible.
 This does not restart Hyprland or change the saved pointer profile.
 
 | Component | Installed path |
 |---|---|
-| Bar plugin | `~/.config/omarchy/plugins/ilysorc.mouse-style/` |
-| Controller/source bundle | `~/.config/omarchy/plugins/ilysorc.mouse-style/` |
-| CLI | `~/.local/bin/mouse-style` |
-| Confirmed preference | `~/.config/mouse-style/config.json` |
-| Bar appearance preference | `~/.config/mouse-style/ui.json` |
-| Generated Windows settings | `~/.config/hypr/mouse-style.lua` |
-| Startup command | `mouse-style restore` |
+| Bar plugin | `~/.config/omarchy/plugins/ilysorc.pointer-feel/` |
+| Controller/source bundle | `~/.config/omarchy/plugins/ilysorc.pointer-feel/` |
+| CLI | `~/.local/bin/pointer-feel` |
+| Confirmed preference | `~/.config/pointer-feel/config.json` |
+| Bar appearance preference | `~/.config/pointer-feel/ui.json` |
+| Generated Windows settings | `~/.config/hypr/pointer-feel.lua` |
+| Startup command | `pointer-feel restore` |
 
 The installer migrates version-1/2 preferences to version 3 after backing them up,
 keeping existing preferences, adopting native settings for old v1 installs, and
@@ -190,27 +191,27 @@ preference as proof that it is active.
 CLI examples (use the latest token returned by each change):
 
 ```sh
-mouse-style status
+pointer-feel status
 # Save the bar appearance immediately:
-mouse-style bar-label letter
+pointer-feel bar-label letter
 # Or return to three-letter codes:
-mouse-style bar-label code
-mouse-style preview omarchy --accel adaptive --sensitivity 0.15
+pointer-feel bar-label code
+pointer-feel preview omarchy --accel adaptive --sensitivity 0.15
 # Refine this trial without losing its original rollback anchor:
-mouse-style preview omarchy --sensitivity 0.25 --replace-token TOKEN
+pointer-feel preview omarchy --sensitivity 0.25 --replace-token TOKEN
 # Use the NEW preview.token from the response:
-mouse-style confirm NEW_TOKEN
+pointer-feel confirm NEW_TOKEN
 # Alternatively, while a trial is pending:
-mouse-style revert NEW_TOKEN
+pointer-feel revert NEW_TOKEN
 # Start a new Windows trial:
-mouse-style preview win --speed 10 --epp on
+pointer-feel preview win --speed 10 --epp on
 # Restore that profile's defaults, keeping the same rollback anchor:
-mouse-style preview win --defaults --replace-token TOKEN
+pointer-feel preview win --defaults --replace-token TOKEN
 ```
 
-To hide only the widget, use `omarchy plugin disable ilysorc.mouse-style`.
+To hide only the widget, use `omarchy plugin disable ilysorc.pointer-feel`.
 To use native pointer motion, first choose Omarchy and Keep it.
-For full removal, run `mouse-style uninstall` (or `./install.sh --uninstall`).
+For full removal, run `pointer-feel uninstall` (or `./install.sh --uninstall`).
 It unloads both engines, removes owned Lua/startup lines and native binaries, and
 removes the bar plugin. Unrelated later configuration changes survive. Personal
 profile preferences, recovery backups, and shared system packages are retained;
@@ -234,7 +235,7 @@ notices retained. Apple research-cache code is not compiled or vendored.
 cmake -S . -B build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
-printf '1,0\n1,0\n15,4\n-2,0\n' | build/mouse-style-replay --speed 10/20 --epp on --dpi 96
+printf '1,0\n1,0\n15,4\n-2,0\n' | build/pointer-feel-replay --speed 10/20 --epp on --dpi 96
 ```
 
 This build requires CMake 3.25+, C++23, Make, and GTest. It fetches no dependencies

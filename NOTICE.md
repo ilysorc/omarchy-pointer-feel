@@ -1,7 +1,7 @@
 # Licensing and provenance
 
-Mouse Style is distributed under GPL-2.0-or-later. See LICENSE for the GPL v2
-text; you may use version 2 or any later version. Copyright 2026 Mouse Style
+Pointer Feel is distributed under GPL-2.0-or-later. See LICENSE for the GPL v2
+text; you may use version 2 or any later version. Copyright 2026 Pointer Feel
 contributors.
 
 The Windows reference engine and native adapter are from junaga/windows-pointer-linux,

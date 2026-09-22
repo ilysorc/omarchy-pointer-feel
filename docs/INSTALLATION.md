@@ -65,6 +65,22 @@ Git-managed checkout boundaries. Fresh native compilation, all 24 native tests,
 1,280 reference samples and the actual QML panel/polling/setup tests pass. See
 [publication readiness](PUBLISHING.md) for packaging, CI and marketplace status.
 
+## Identity migration verified on 2026-09-22
+
+The active installation was moved to `ilysorc.pointer-feel`, `pointer-feel`,
+`pointer_feel.py`, `~/.config/pointer-feel`, `~/.local/state/pointer-feel`,
+`~/.config/hypr/pointer-feel.lua` and `pointer-feel-mac.so`. The source and private
+GitHub repository are named `omarchy-pointer-feel`.
+
+Before cutover, 70 Python tests, all three actual QML checks, 24 native tests and
+1,280 Mac reference samples passed with the renamed paths. Both modules were
+built against the running ABI. The prior full uninstaller and the renamed
+installer's normal activation/rollback transaction performed the cutover.
+Saved profile and UI values, active Windows behavior and the bar position were
+preserved. Installation readiness and Hyprland configuration checks passed.
+Retired files and recovery copies are archived outside the active source and
+plugin trees. The rename adds no trackpad functionality or OS-parity claims.
+
 ## Boundaries
 
 The package manager itself is not rolled back after a later compile/load error.
@@ -74,6 +90,6 @@ The current compatibility target is the tested 0.56.2 source API; it is not a
 promise of compatibility with every future compositor release.
 
 Omarchy's plain `plugin remove` only removes its repository/widget; full removal
-must use `mouse-style uninstall` first. Preferences and system packages remain
+must use `pointer-feel uninstall` first. Preferences and system packages remain
 intentionally. No automatic deletion of unrelated packages or backup history is
 performed.

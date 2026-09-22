@@ -30,7 +30,7 @@ natural scrolling, and primary-button choice.
 ```text
 Omarchy bar and panel (QML)
        | bounded process calls on user action / status polling
-mouse-style controller (Python)
+pointer-feel controller (Python)
        | load / unload / reload and verified status
 Windows module OR Mac reference module (mutually exclusive)
        | Windows engine or native passthrough when unloaded
@@ -44,7 +44,7 @@ introduced. The first installation adopts the existing Windows preferences or
 starts from native Omarchy if no backend is active. Windows availability is
 reported separately from the selected/saved profile.
 
-The installer adds a final managed settings include and a `mouse-style restore`
+The installer adds a final managed settings include and a `pointer-feel restore`
 startup route. It preserves unrelated input settings and prevents a duplicate
 common `windows-pointer on` helper. A different native plugin manager remains an
 explicit integration consideration; two loaders must not compete.
@@ -99,7 +99,7 @@ The header follows theme colors and type sizing independently of the bar label.
 Letter displays O/M/W; Code displays OMA/MAC/WIN and is the default for existing
 installations. Hidden leaves only the Flow icon, with no label spacing or trial
 dot; the widget keeps its tooltip, click target and active trial highlight. Setup
-still shows its label when required. `mouse-style bar-label letter|code|hidden` writes `ui.json` atomically under
+still shows its label when required. `pointer-feel bar-label letter|code|hidden` writes `ui.json` atomically under
 the controller lock and returns refreshed status. The frontend reads `ui.bar_label`.
 Appearance is persisted immediately, separately from pointer preferences. It does
 not reload the motion engine, start/confirm a trial, or renew its timer. Profile
@@ -107,9 +107,9 @@ switches, Restore defaults, Keep, Revert, and startup restore leave it intact.
 
 ## Transactions, persistence, and rollback
 
-Confirmed preferences: `~/.config/mouse-style/config.json`.
-Pending trial: `~/.local/state/mouse-style/preview.json`.
-Generated, guarded Lua preferences: `~/.config/hypr/mouse-style.lua`.
+Confirmed preferences: `~/.config/pointer-feel/config.json`.
+Pending trial: `~/.local/state/pointer-feel/preview.json`.
+Generated, guarded Lua preferences: `~/.config/hypr/pointer-feel.lua`.
 
 A file lock serializes controllers and rollback workers. Each trial receives a
 unique token and session identity. The controller records the actual previous

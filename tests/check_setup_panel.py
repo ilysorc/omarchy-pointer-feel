@@ -60,7 +60,7 @@ esac
 
 def main():
     source = Path(__file__).resolve().parents[1]
-    with tempfile.TemporaryDirectory(prefix="mouse-style-setup-qml-") as temp:
+    with tempfile.TemporaryDirectory(prefix="pointer-feel-setup-qml-") as temp:
         root = Path(temp)
         for name in ("SetupState.qml", "SetupPanel.qml"):
             shutil.copyfile(source / name, root / name)

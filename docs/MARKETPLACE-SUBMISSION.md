@@ -1,6 +1,6 @@
 # Marketplace submission draft
 
-Title: **[Plugin]: Mouse Style**
+Title: **[Plugin]: Pointer Feel**
 
 Status: not submitted. Publish the repository first, then show the completed
 title/body to the owner and confirm all five checklist statements before sending.
@@ -9,7 +9,7 @@ starts at `Repository URL`; do not include this preamble in the issue.
 
 ### Repository URL
 
-https://github.com/ilysorc/omarchy-mouse-style
+https://github.com/ilysorc/omarchy-pointer-feel
 
 ### Category
 
@@ -25,7 +25,7 @@ _No response_
 
 ### Maintainer notes
 
-Mouse Style provides native Omarchy settings, a Windows pointer reference, and
+Pointer Feel provides native Omarchy settings, a Windows pointer reference, and
 an experimental Mac Sequoia measured reference. The English interface is
 vendor-neutral, preserves per-profile preferences, and uses verified 15-second
 trials with Keep/Revert. Hardware DPI is not changed.

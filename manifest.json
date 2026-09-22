@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "ilysorc.mouse-style",
-  "name": "Mouse Style",
+  "id": "ilysorc.pointer-feel",
+  "name": "Pointer Feel",
   "version": "0.4.0",
   "license": "GPL-2.0-or-later",
   "author": "ilysorc",
@@ -9,7 +9,7 @@
   "kinds": ["bar-widget"],
   "entryPoints": { "barWidget": "BarWidget.qml" },
   "barWidget": {
-    "displayName": "Mouse Style",
+    "displayName": "Pointer Feel",
     "category": "System",
     "allowMultiple": false,
     "defaultSection": "right"

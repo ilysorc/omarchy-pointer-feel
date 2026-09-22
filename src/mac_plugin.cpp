@@ -29,7 +29,7 @@ uint64_t processed = 0, passthrough = 0;
 using Original = void (*)(CInputManager*, IPointer::SMotionEvent);
 
 [[noreturn]] void fail(const std::string& message) {
-    throw std::runtime_error("Mouse Style Mac: " + message);
+    throw std::runtime_error("Pointer Feel Mac: " + message);
 }
 int parseTracking(const std::string& text) {
     int value = 0;
@@ -77,15 +77,15 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE pluginHandle) {
         },
     };
     trackingOption = makeShared<Config::Values::CStringValue>(
-        "plugin:mouse-style-mac:tracking-speed", "Sequoia reference tracking level (1..10).", "4", std::move(options));
+        "plugin:pointer-feel-mac:tracking-speed", "Sequoia reference tracking level (1..10).", "4", std::move(options));
     if (!HyprlandAPI::addConfigValueV2(handle, trackingOption)) fail("Could not register settings.");
     readSettings();
     reloadListener = Event::bus()->m_events.config.reloaded.listen(readSettings);
     if (Config::mgr()->type() == Config::CONFIG_LUA &&
-        !HyprlandAPI::addLuaFunction(handle, "mouse_style_mac", "loaded", luaLoaded))
+        !HyprlandAPI::addLuaFunction(handle, "pointer_feel_mac", "loaded", luaLoaded))
         fail("Could not register the Lua namespace.");
     command = HyprlandAPI::registerHyprCtlCommand(handle, SHyprCtlCommand{
-        .name = "mouse-style-mac",
+        .name = "pointer-feel-mac",
         .exact = true,
         .fn = [](eHyprCtlOutputFormat, std::string) {
             std::ostringstream out;
@@ -102,7 +102,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE pluginHandle) {
     if (target == functions.end()) fail("Could not find the matching mouse motion entry point.");
     hook = HyprlandAPI::createFunctionHook(handle, target->address, reinterpret_cast<void*>(onMouseMoved));
     if (!hook || !hook->hook()) fail("Could not attach the mouse motion hook.");
-    return {"mouse-style-mac", "Experimental macOS Sequoia measured pointer reference", "Mouse Style contributors", "0.3.0"};
+    return {"pointer-feel-mac", "Experimental macOS Sequoia measured pointer reference", "Pointer Feel contributors", "0.3.0"};
 }
 APICALL EXPORT void PLUGIN_EXIT() {
     reloadListener.reset();

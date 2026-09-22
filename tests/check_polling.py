@@ -115,11 +115,11 @@ print(json.dumps(data))
 
 def main():
     source = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1] / "PointerState.qml"
-    with tempfile.TemporaryDirectory(prefix="mouse-style-polling-") as temp:
+    with tempfile.TemporaryDirectory(prefix="pointer-feel-polling-") as temp:
         root = Path(temp)
         shutil.copyfile(source, root / "PointerState.qml")
         (root / "shell.qml").write_text(QML)
-        command = root / "mouse-style"
+        command = root / "pointer-feel"
         command.write_text(FAKE_CLI)
         command.chmod(0o755)
         data_file = command.with_suffix(".json")

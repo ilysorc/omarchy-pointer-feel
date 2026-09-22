@@ -5,17 +5,17 @@ candidate, not a published GitHub release or an approved marketplace listing.
 
 ## Identity and listing
 
-- Repository to publish: `https://github.com/ilysorc/omarchy-mouse-style`.
-- Permanent plugin ID: `ilysorc.mouse-style`; display name: Mouse Style.
+- Private repository: `https://github.com/ilysorc/omarchy-pointer-feel`.
+- Permanent plugin ID: `ilysorc.pointer-feel`; display name: Pointer Feel.
 - Release tag: `v0.4.0`. Use a GitHub prerelease for this first public candidate.
 - Marketplace category: Hardware. Tags: `bar`, `hyprland`, `quickshell`.
 - License: GPL-2.0-or-later, with retained BSD Windows and GPL libpointing notices.
 - Root `preview.png` captures the current real panel, including its profile icon;
   it contains no other windows or personal information.
 
-GitHub authentication is available for the owner account, but the repository
-does not exist yet. The plugin ID was absent from the current marketplace
-registry, including retired IDs. Recheck uniqueness before submitting.
+The repository exists under the Pointer Feel name and is **private**, as requested
+by the owner. Public distribution is paused. Check the final plugin ID against
+the marketplace registry, including retired IDs, before a future submission.
 
 ## Checked locally
 
@@ -37,23 +37,24 @@ registry, including retired IDs. Recheck uniqueness before submitting.
 - `tools/check_release.py` checks pinned vendor hashes, version consistency,
   entry points, preview limits, source archive/checksum and extracted bundle
   identity. Native binaries and private research/build caches are excluded.
-- The hosted GitHub Actions workflow is prepared. It has **not run on GitHub**;
-  its first successful run is still a publication gate. It never uses personal
-  self-hosted runners. Desktop/QML checks are separate from that portable job.
+- The initial hosted [Checks run](https://github.com/ilysorc/omarchy-pointer-feel/actions/runs/35748660341)
+  passed. Each later candidate must pass its own run before release. The workflow
+  never uses personal self-hosted runners; desktop/QML checks run separately.
 
 Missing-package and failure cases use isolated homes and controlled commands.
 A separate clean Omarchy OS/VM install, wider mouse/monitor coverage, and future
 Hyprland versions are not verified. Mac uses measured Sequoia tables and does
-not claim exact modern macOS parity. These limits are public in the README.
+not claim exact modern macOS parity. These limits are documented in the README.
 
 ## Marketplace preflight
 
-The marketplace's static analysis functions were run locally on 19 selected
+Before the identity change, the marketplace's static analysis functions ran on 19 selected
 working-tree files, using marketplace commit
 `db4c6873015f573e78586a2c8e4097a8f134ef52`.
 Result: zero findings, capabilities `installer`, `package-manager`, `privilege`,
 disposition `review-required`, `blocksApproval: false` under the selective policy.
-The local report is `build/marketplace-preflight.json`.
+That historical local report is retained in the local migration backup. Rerun
+the preflight for the final identity and commit before public distribution.
 
 This preparation check is not an official remote snapshot scan or approval.
 After submission, the marketplace must fetch and scan the exact public commit,
@@ -64,20 +65,20 @@ does not automatically execute third-party install hooks.
 
 ## Remaining publication steps
 
-1. Publish the reviewed source to the owner's public GitHub repository.
+1. Obtain explicit owner approval to make the currently private repository public.
 2. Wait for the hosted Checks workflow to pass; fix failures before tagging.
 3. Create `v0.4.0` from the checked commit and publish the prerelease with the
    source archive, SHA-256 file and [release notes](releases/0.4.0.md).
 4. Review the completed [submission draft](MARKETPLACE-SUBMISSION.md) with the
    owner after the public URL works. Confirm all five checklist statements,
    including ownership of source and preview assets.
-5. Submit one issue titled `[Plugin]: Mouse Style`. Follow its validation results
+5. Submit one issue titled `[Plugin]: Pointer Feel`. Follow its validation results
    and maintainer review; do not open duplicate submissions.
 6. A maintainer finalizes setup labels and applies `approved-and-verified` after
    reviewing the exact commit. Verify that the listing actually appears.
 
-The repository, release and marketplace issue have not been created by this
-readiness check. There is no public download/listing URL to announce yet.
+The source repository is private. No release or marketplace issue has been
+created; there is no public download/listing URL to announce yet.
 
 Primary instructions: [Publish](https://plugins.omarchy.org/publish.html),
 [Develop](https://plugins.omarchy.org/develop.html), and the marketplace's

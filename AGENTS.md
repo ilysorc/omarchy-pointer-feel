@@ -1,4 +1,4 @@
-# Mouse Style documentation routing
+# Pointer Feel documentation routing
 
 This repository owns its product decisions, implementation notes, development
 plan, research, and validation records. Keep those records here rather than

@@ -13,7 +13,7 @@ from setup import bundle_files
 
 def main():
     version = json.loads((ROOT / "manifest.json").read_text())["version"]
-    name = f"omarchy-mouse-style-{version}"
+    name = f"omarchy-pointer-feel-{version}"
     output = ROOT / "build/dist" / (name + ".tar.gz")
     output.parent.mkdir(parents=True, exist_ok=True)
     with tarfile.open(output, "w:gz") as archive:

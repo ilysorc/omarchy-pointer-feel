@@ -44,7 +44,7 @@ not implemented by this pointer module.
 
 ## Integration
 
-The optional `mouse-style-mac.so` module uses the same inspected Hyprland motion
+The optional `pointer-feel-mac.so` module uses the same inspected Hyprland motion
 entry point as the existing Windows module, with the compositor ABI check intact.
 The controller unloads the current engine before loading the selected one. Mac
 initialization additionally refuses to load over Windows. Only one hook is active;

@@ -5,7 +5,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from mouse_style import Controller, ControlError, Hyprland, validate, write_json, migrate_config, render_lua, MAC_DEFAULT, PROFILE_DEFAULTS
+from pointer_feel import Controller, ControlError, Hyprland, validate, write_json, migrate_config, render_lua, MAC_DEFAULT, PROFILE_DEFAULTS
 
 
 NATIVE = {"accel_profile": "", "sensitivity": 0, "scroll_factor": 1,

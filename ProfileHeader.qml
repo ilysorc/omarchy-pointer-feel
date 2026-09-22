@@ -10,7 +10,7 @@ Ui.PanelHero {
     readonly property bool knownProfile: profile === "win" || profile === "mac" || profile === "omarchy"
     readonly property string profileName: profile === "win" ? "Windows" : profile === "mac" ? "Mac" : profile === "omarchy" ? "Omarchy" : "Unverified"
 
-    title: "Mouse Style"
+    title: "Pointer Feel"
     meta: "Active: " + profileName + (trial ? " · trial" : "")
 
     iconComponent: Component {

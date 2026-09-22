@@ -1,7 +1,8 @@
 # Roadmap and acceptance criteria
 
-Current state on 2026-09-22: 0.4.0 is locally validated for publication; the public
-repository, hosted CI run, release and marketplace submission are still pending.
+Current state on 2026-09-22: Pointer Feel 0.4.0 is locally validated and the GitHub
+repository is private. The initial hosted CI passed; release and marketplace
+submission remain paused until the owner approves public distribution.
 See [publication readiness](PUBLISHING.md) and its submission draft. The owner approved
 the current overall experience after the profile, reset, and bar-label changes.
 That feedback is separate from independent algorithm equivalence, hardware
@@ -99,7 +100,7 @@ separate follow-up; the native engine behavior must remain unchanged.
   and actual desktop installation/idempotency passed. See [details](INSTALLATION.md).
 - Installation readiness is independent of live profile transitions, including
   trial replacement and Keep; normal tuning no longer opens the repair panel.
-- Public distribution still needs a remote repository and marketplace submission.
+- The private remote exists; public distribution and marketplace submission are pending.
 
 ## Completed: publication preparation
 
@@ -111,6 +112,17 @@ separate follow-up; the native engine behavior must remain unchanged.
 - Fresh native build, 24 native tests, 1,280 samples and actual QML checks passed.
 - Local marketplace static preflight has no findings; installer privileges
   require maintainer review. Public release and submission drafts are prepared.
+
+## Completed: Pointer Feel identity
+
+- Product title, plugin ID, CLI, Python module, Mac module, build targets and
+  source archives use the Pointer Feel identity.
+- Repository and local source directory are named `omarchy-pointer-feel`.
+- Desktop integration and preference paths use `pointer-feel`; the active
+  installation preserves all saved profiles, the bar label and bar position.
+- The README preview shows the renamed panel and Hidden label option.
+- Third-party Windows and libpointing identities, licenses and pinned source
+  hashes remain intact. Trackpad support is not added by this rename.
 
 ## Next: shared native backend
 
@@ -149,6 +161,6 @@ Keep microbenchmarks separate from end-to-end latency claims. Broader user tests
 do not substitute for Windows/macOS reference comparisons.
 
 Unified build/install/update/uninstall is implemented in 0.4.0. Validation is
-recorded in docs/INSTALLATION.md. A public remote repository and marketplace
-submission have not been created. Broader compositor/hardware coverage remains
+recorded in docs/INSTALLATION.md. The remote is private and marketplace
+submission has not been created. Broader compositor/hardware coverage remains
 separate from validating this installation on the current stack.

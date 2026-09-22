@@ -36,7 +36,7 @@ Item {
         commandKind = args[0]
         if (commandKind !== "status") actionError = ""
         requestRunning = true
-        process.command = ["timeout", "--kill-after=2s", "25s", "mouse-style"].concat(args)
+        process.command = ["timeout", "--kill-after=2s", "25s", "pointer-feel"].concat(args)
         process.running = true
         watchdog.restart()
     }

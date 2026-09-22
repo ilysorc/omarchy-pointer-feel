@@ -24,7 +24,7 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_*.py' -q
       - name: Build and test reference engines
         run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DMOUSE_STYLE_BUILD_PLUGIN=OFF
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DPOINTER_FEEL_BUILD_PLUGIN=OFF
           cmake --build build --parallel 2
           ctest --test-dir build --output-on-failure
           python3 tests/check_mac_reference.py

@@ -4,7 +4,7 @@ import qs.Ui as Ui
 
 Ui.Panel {
     id: root
-    moduleName: "ilysorc.mouse-style"
+    moduleName: "ilysorc.pointer-feel"
     ipcTarget: moduleName
     implicitWidth: button.implicitWidth
     implicitHeight: button.implicitHeight
@@ -25,7 +25,7 @@ Ui.Panel {
         bar: root.bar
         text: setup.ready ? state.barLabel : "Setup"
         active: state.trial
-        tooltipText: "Mouse Style · " + (state.profile === "win" ? "Windows" : state.profile === "mac" ? "Mac (experimental)" : state.profile === "omarchy" ? "Omarchy" : "Reading status")
+        tooltipText: "Pointer Feel · " + (state.profile === "win" ? "Windows" : state.profile === "mac" ? "Mac (experimental)" : state.profile === "omarchy" ? "Omarchy" : "Reading status")
         onPressed: function(mouseButton) {
             if (mouseButton === Qt.LeftButton) root.toggle()
             else if (mouseButton === Qt.RightButton) state.refresh()
