@@ -1,11 +1,11 @@
 # Publication readiness
 
-Checked on 2026-09-22 for version 1.0.0. This is a locally validated release
-candidate, not a published GitHub release or an approved marketplace listing.
+Validation and publication record for version 1.0.0, checked on 2026-09-22.
+Local validation and a GitHub release do not imply marketplace approval.
 
 ## Identity and listing
 
-- Private repository: `https://github.com/ilysorc/omarchy-pointer-feel`.
+- Repository: `https://github.com/ilysorc/omarchy-pointer-feel`.
 - Permanent plugin ID: `ilysorc.pointer-feel`; display name: Pointer Feel.
 - Planned first release: `v1.0.0`, a regular GitHub release. The Mac profile
   remains experimental; the application version does not expand hardware or
@@ -16,10 +16,10 @@ candidate, not a published GitHub release or an approved marketplace listing.
   click cursor and active profile icon;
   it contains no other windows or personal information.
 
-The repository exists under the Pointer Feel name and is **private**, as requested
-by the owner. Public distribution is paused. The plugin ID has no collision in
-the checked marketplace registry, including retired IDs; check again immediately
-before a future submission.
+The owner authorized making the repository public, releasing 1.0.0 and submitting
+it to the marketplace on 2026-09-22. The plugin ID has no collision in the checked
+marketplace registry, including retired IDs. Marketplace approval remains a
+separate maintainer decision.
 
 ## Checked locally
 
@@ -41,7 +41,7 @@ before a future submission.
 - `tools/check_release.py` checks pinned vendor hashes, version consistency,
   entry points, preview limits, source archive/checksum and extracted bundle
   identity. Native binaries and private research/build caches are excluded.
-- The initial hosted [Checks run](https://github.com/ilysorc/omarchy-pointer-feel/actions/runs/35748660341)
+- The hosted [Checks run for the final code change](https://github.com/ilysorc/omarchy-pointer-feel/actions/runs/35767876536)
   passed. Each later candidate must pass its own run before release. The workflow
   never uses personal self-hosted runners; desktop/QML checks run separately.
 
@@ -58,12 +58,16 @@ untested; this decision does not count as additional installation evidence.
 
 For the 1.0.0 preparation on 2026-09-22, the marketplace's static analysis
 functions ran on 19 selected working-tree files, using marketplace commit
-`f9616da57d8d8661ee2b0de395bb364e23efd621`.
+`cef825b030fbd738fdccb61d1f1b980200d8625f`.
 Result: zero findings, capabilities `installer`, `package-manager`, `privilege`,
 disposition `review-required`, `blocksApproval: false` under the selective policy.
 The same registry snapshot has no occurrence of `ilysorc.pointer-feel`, including
 retired identifiers. The local report is in
-`build/version-1.0.0/marketplace-preflight.json`; it is not part of the distribution.
+`build/final-publish-review.json`; it is not part of the distribution.
+The submission's six headings, category, tags and checklist text match the
+official parser. Documentation links, source/archive contents and a targeted
+Git-history scan for credential patterns were also checked. That pattern scan
+is not a complete secret audit.
 Rerun the preflight if the candidate or marketplace rules change before release.
 
 This preparation check is not an official remote snapshot scan or approval.
@@ -73,22 +77,22 @@ the repository requires clicking **Install / Repair** once. That action installs
 missing dependencies and builds both native modules; Omarchy's plugin manager
 does not automatically execute third-party install hooks.
 
-## Remaining publication steps
+## Publication procedure
 
-1. Obtain explicit owner approval to make the currently private repository public.
+1. Confirm owner authorization for public distribution (received on 2026-09-22).
 2. Wait for the hosted Checks workflow to pass; fix failures before tagging.
 3. Create `v1.0.0` from the checked commit and publish the release with the
    source archive, SHA-256 file and [release notes](releases/1.0.0.md).
-4. Review the completed [submission draft](MARKETPLACE-SUBMISSION.md) with the
-   owner after the public URL works. Confirm all five checklist statements,
-   including ownership of source and preview assets.
+4. Verify that the public URL works and all five statements in the
+   [submission record](MARKETPLACE-SUBMISSION.md) are true, including source and
+   preview rights. The owner authorized submission as part of publication.
 5. Submit one issue titled `[Plugin]: Pointer Feel`. Follow its validation results
    and maintainer review; do not open duplicate submissions.
 6. A maintainer finalizes setup labels and applies `approved-and-verified` after
    reviewing the exact commit. Verify that the listing actually appears.
 
-The source repository is private. No release or marketplace issue has been
-created; there is no public download/listing URL to announce yet.
+Record the release and marketplace issue URLs after publication. A submitted
+issue is not an approved listing.
 
 Primary instructions: [Publish](https://plugins.omarchy.org/publish.html),
 [Develop](https://plugins.omarchy.org/develop.html), and the marketplace's

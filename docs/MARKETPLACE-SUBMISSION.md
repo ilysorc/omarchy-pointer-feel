@@ -2,10 +2,10 @@
 
 Title: **[Plugin]: Pointer Feel**
 
-Status: not submitted. Publish the repository first, then show the completed
-title/body to the owner and confirm all five checklist statements before sending.
-The unchecked statements below are pending that final review. The issue body
-starts at `Repository URL`; do not include this preamble in the issue.
+The owner authorized publication and marketplace submission on 2026-09-22.
+Verify public access and the checklist before sending. The issue body starts at
+`Repository URL`; do not include this preamble in the issue. Record the resulting
+issue URL here after submission.
 
 ### Repository URL
 
@@ -26,13 +26,15 @@ _No response_
 ### Maintainer notes
 
 Pointer Feel provides native Omarchy settings, a Windows pointer reference, and
-an experimental Mac Sequoia measured reference. The English interface is
-vendor-neutral, preserves per-profile preferences, and uses verified 15-second
-trials with Keep/Revert. Hardware DPI is not changed.
+an experimental Mac Sequoia measured reference. It preserves per-profile
+preferences and uses 15-second trials with Keep/Revert. Hardware DPI is not
+changed.
 
 This release targets Omarchy Quattro with Hyprland 0.56.2 and Lua configuration.
-Other Hyprland versions are rejected before package changes; matching headers
-and the running compositor ABI are required. Exact macOS parity is not claimed.
+Other Hyprland versions are rejected before native setup; matching headers and
+the running compositor ABI are required. When Python is missing, the shell
+bootstrap first offers to install it before compositor validation. Exact macOS
+parity is not claimed.
 
 Please apply `manual-setup`: after adding/enabling the plugin, the user clicks
 Install / Repair once. The same install.sh worker installs missing Arch packages
