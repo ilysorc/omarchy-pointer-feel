@@ -7,7 +7,7 @@ Ui.WidgetButton {
     id: root
     // Keep Omarchy's click/hover/tooltip behavior, with our own vector + label.
     labelVisible: false
-    hasVisualContent: true // The Flow icon remains visible when the label is hidden.
+    hasVisualContent: true // The cursor icon remains visible when the label is hidden.
     property color contentColor: active && useActiveColor ? activeColor : foreground
     implicitWidth: fixedWidth > 0 ? fixedWidth : (vertical ? barSize : content.implicitWidth + scaledHorizontalMargin * 2)
     implicitHeight: fixedHeight > 0 ? fixedHeight : (vertical ? content.implicitHeight + scaledVerticalPadding * 2 : barSize)

@@ -12,7 +12,8 @@ candidate, not a published GitHub release or an approved marketplace listing.
   compositor support.
 - Marketplace category: Hardware. Tags: `bar`, `hyprland`, `quickshell`.
 - License: GPL-2.0-or-later, with retained BSD Windows and GPL libpointing notices.
-- Root `preview.png` captures the current real panel, including its profile icon;
+- Root `preview.png` captures the current real bar and panel, including the filled
+  click cursor and active profile icon;
   it contains no other windows or personal information.
 
 The repository exists under the Pointer Feel name and is **private**, as requested

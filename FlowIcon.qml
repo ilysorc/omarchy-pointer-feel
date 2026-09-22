@@ -8,7 +8,7 @@ Item {
     implicitWidth: 16
     implicitHeight: 16
 
-    // Original Flow mark: a pointer and its motion curve on a 16-unit grid.
+    // Filled click cursor with three rays, drawn on the approved 16-unit grid.
     Shape {
         anchors.centerIn: parent
         width: 16
@@ -16,16 +16,18 @@ Item {
         scale: Math.min(root.width, root.height) / 16
         preferredRendererType: Shape.CurveRenderer
         ShapePath {
-            strokeWidth: -1
+            strokeWidth: 0.6
+            strokeColor: root.color
             fillColor: root.color
-            PathSvg { path: "M2.5 1.75 11.25 7.75 7.7 8.45 6.05 12.15Z" }
+            joinStyle: ShapePath.RoundJoin
+            PathSvg { path: "M5 5 L14 7.7 L10.5 9.2 L13.4 12.1 L12.1 13.4 L9.2 10.5 L7.7 14 Z" }
         }
         ShapePath {
             fillColor: "transparent"
             strokeColor: root.color
             strokeWidth: 1.5
             capStyle: ShapePath.RoundCap
-            PathSvg { path: "M9 13.5c3.1 0 5-1.75 5-4.5" }
+            PathSvg { path: "M1.6 1.6L3 3M5.4 1v1.8M1 5.4h1.8" }
         }
     }
 }

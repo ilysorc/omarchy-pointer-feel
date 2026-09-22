@@ -84,7 +84,8 @@ This resets managed input preferences, not the desktop configuration or hardware
 
 ## Bar label preference
 
-The owner selected the original Flow mark: a pointer with a motion curve.
+On 2026-09-22, the owner selected the filled click cursor: a solid pointer with
+three short click rays, replacing the previous pointer-and-curve mark.
 `FlowIcon.qml` draws it as a theme-colored vector; `FlowButton.qml` preserves
 Omarchy's widget interaction behavior and places the profile label beside it.
 The icon uses the shell's icon size token and does not depend on a font glyph.
@@ -93,11 +94,11 @@ The panel uses Omarchy's shared `PanelHero` header. `ProfileHeader.qml` shows
 the active profile's logo beside the product title: the bundled Omarchy font's
 menu mark, or the Apple/Windows glyphs in Omarchy's JetBrainsMono Nerd Font.
 It follows verified `PointerState.profile`, including trials and reverts; an
-unknown state shows Flow with "Unverified" rather than retaining a stale OS logo.
+unknown state shows the click cursor with "Unverified" rather than retaining a stale OS logo.
 The header follows theme colors and type sizing independently of the bar label.
 
 Letter displays O/M/W; Code displays OMA/MAC/WIN and is the default for existing
-installations. Hidden leaves only the Flow icon, with no label spacing or trial
+installations. Hidden leaves only the cursor icon, with no label spacing or trial
 dot; the widget keeps its tooltip, click target and active trial highlight. Setup
 still shows its label when required. `pointer-feel bar-label letter|code|hidden` writes `ui.json` atomically under
 the controller lock and returns refreshed status. The frontend reads `ui.bar_label`.

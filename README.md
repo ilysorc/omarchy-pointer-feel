@@ -6,12 +6,12 @@ A vendor-neutral, English-language pointer profile panel for Omarchy/Hyprland.
 verified changes, 15-second trials, Keep/Revert, and session persistence.
 **Mac is an experimental Sequoia measured reference.**
 
-![Pointer Feel panel with the Windows profile selected](preview.png)
+![Pointer Feel filled cursor bar icon and panel with the Windows profile selected](preview.png)
 
 ## Use the panel
 
 Click the **OMA / MAC / WIN** widget in the right side of the bar.
-The original **Flow** icon (pointer and motion curve) follows the bar's theme
+The **filled click cursor** icon (pointer and three short rays) follows the bar's theme
 color and scale, independently of the icon font.
 The panel header shows the active profile's Omarchy, Apple, or Windows logo
 beside **Pointer Feel**, including during trials and after reverting.
