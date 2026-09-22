@@ -102,7 +102,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE pluginHandle) {
     if (target == functions.end()) fail("Could not find the matching mouse motion entry point.");
     hook = HyprlandAPI::createFunctionHook(handle, target->address, reinterpret_cast<void*>(onMouseMoved));
     if (!hook || !hook->hook()) fail("Could not attach the mouse motion hook.");
-    return {"pointer-feel-mac", "Experimental macOS Sequoia measured pointer reference", "Pointer Feel contributors", "0.3.0"};
+    return {"pointer-feel-mac", "Experimental macOS Sequoia measured pointer reference", "Pointer Feel contributors", POINTER_FEEL_VERSION};
 }
 APICALL EXPORT void PLUGIN_EXIT() {
     reloadListener.reset();

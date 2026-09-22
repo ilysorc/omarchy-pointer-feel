@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(omarchy_pointer_feel VERSION 0.4.0 LANGUAGES CXX)
+project(omarchy_pointer_feel VERSION 1.0.0 LANGUAGES CXX)
 
 # Offline reference engines; the optional module requires matching Hyprland headers.
 set(WINDOWS_REFERENCE "${CMAKE_CURRENT_SOURCE_DIR}/vendor/windows-pointer-linux")
@@ -37,6 +37,7 @@ if(POINTER_FEEL_BUILD_PLUGIN)
   add_library(pointer-feel-mac MODULE src/mac_plugin.cpp)
   target_link_libraries(pointer-feel-mac PRIVATE pointer_feel_mac PkgConfig::HYPRLAND)
   target_compile_options(pointer-feel-mac PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_definitions(pointer-feel-mac PRIVATE POINTER_FEEL_VERSION="${PROJECT_VERSION}")
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_compile_options(pointer-feel-mac PRIVATE -fno-gnu-unique)
     target_compile_options(windows-pointer-linux PRIVATE -fno-gnu-unique)

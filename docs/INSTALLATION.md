@@ -1,6 +1,6 @@
 # Installation contract and validation
 
-Date: 2026-09-21. Version: 0.4.0. Current target: Omarchy / Hyprland 0.56.2.
+Date: 2026-09-22. Version: 1.0.0. Current target: Omarchy / Hyprland 0.56.2.
 
 `./install.sh` owns one complete setup: consent, package preflight, installing
 missing packages, building both native modules, transactional activation,
@@ -20,7 +20,7 @@ native modules, receipt and files deployed into a development copy. A persistent
 journal permits recovery after process interruption. Shared packages and user
 preferences/backups are retained on full removal.
 
-## Verification record
+## Verification record: 0.4.0 on 2026-09-21
 
 - 68 Python tests pass. Isolated-home tests drive the full installer transaction
   with fake system commands: fresh install, missing packages, authentication
@@ -80,6 +80,16 @@ Saved profile and UI values, active Windows behavior and the bar position were
 preserved. Installation readiness and Hyprland configuration checks passed.
 Retired files and recovery copies are archived outside the active source and
 plugin trees. The rename adds no trackpad functionality or OS-parity claims.
+
+## Version 1.0.0 preparation on 2026-09-22
+
+The real installer rebuilt both native modules and verified profile activation
+for 1.0.0. The owned Mac module now reports the CMake project version rather than
+a separate stale literal. Saved profile/UI files remained byte-for-byte identical,
+the active Windows profile was restored, no trial remained, and both source and
+installed bundles reported ready with no Hyprland configuration errors. The
+source archive and its extracted runtime identity passed release validation.
+This version change adds no device support or algorithm-parity claim.
 
 ## Boundaries
 

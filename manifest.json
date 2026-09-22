@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "ilysorc.pointer-feel",
   "name": "Pointer Feel",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "license": "GPL-2.0-or-later",
   "author": "ilysorc",
   "description": "Switch between native Omarchy, Mac reference, and Windows pointer behavior, with verified settings and timed trials.",

@@ -1,21 +1,24 @@
 # Publication readiness
 
-Checked on 2026-09-22 for version 0.4.0. This is a locally validated release
+Checked on 2026-09-22 for version 1.0.0. This is a locally validated release
 candidate, not a published GitHub release or an approved marketplace listing.
 
 ## Identity and listing
 
 - Private repository: `https://github.com/ilysorc/omarchy-pointer-feel`.
 - Permanent plugin ID: `ilysorc.pointer-feel`; display name: Pointer Feel.
-- Release tag: `v0.4.0`. Use a GitHub prerelease for this first public candidate.
+- Planned first release: `v1.0.0`, a regular GitHub release. The Mac profile
+  remains experimental; the application version does not expand hardware or
+  compositor support.
 - Marketplace category: Hardware. Tags: `bar`, `hyprland`, `quickshell`.
 - License: GPL-2.0-or-later, with retained BSD Windows and GPL libpointing notices.
 - Root `preview.png` captures the current real panel, including its profile icon;
   it contains no other windows or personal information.
 
 The repository exists under the Pointer Feel name and is **private**, as requested
-by the owner. Public distribution is paused. Check the final plugin ID against
-the marketplace registry, including retired IDs, before a future submission.
+by the owner. Public distribution is paused. The plugin ID has no collision in
+the checked marketplace registry, including retired IDs; check again immediately
+before a future submission.
 
 ## Checked locally
 
@@ -48,13 +51,15 @@ not claim exact modern macOS parity. These limits are documented in the README.
 
 ## Marketplace preflight
 
-Before the identity change, the marketplace's static analysis functions ran on 19 selected
-working-tree files, using marketplace commit
-`db4c6873015f573e78586a2c8e4097a8f134ef52`.
+For the 1.0.0 preparation on 2026-09-22, the marketplace's static analysis
+functions ran on 19 selected working-tree files, using marketplace commit
+`f9616da57d8d8661ee2b0de395bb364e23efd621`.
 Result: zero findings, capabilities `installer`, `package-manager`, `privilege`,
 disposition `review-required`, `blocksApproval: false` under the selective policy.
-That historical local report is retained in the local migration backup. Rerun
-the preflight for the final identity and commit before public distribution.
+The same registry snapshot has no occurrence of `ilysorc.pointer-feel`, including
+retired identifiers. The local report is in
+`build/version-1.0.0/marketplace-preflight.json`; it is not part of the distribution.
+Rerun the preflight if the candidate or marketplace rules change before release.
 
 This preparation check is not an official remote snapshot scan or approval.
 After submission, the marketplace must fetch and scan the exact public commit,
@@ -67,8 +72,8 @@ does not automatically execute third-party install hooks.
 
 1. Obtain explicit owner approval to make the currently private repository public.
 2. Wait for the hosted Checks workflow to pass; fix failures before tagging.
-3. Create `v0.4.0` from the checked commit and publish the prerelease with the
-   source archive, SHA-256 file and [release notes](releases/0.4.0.md).
+3. Create `v1.0.0` from the checked commit and publish the release with the
+   source archive, SHA-256 file and [release notes](releases/1.0.0.md).
 4. Review the completed [submission draft](MARKETPLACE-SUBMISSION.md) with the
    owner after the public URL works. Confirm all five checklist statements,
    including ownership of source and preview assets.

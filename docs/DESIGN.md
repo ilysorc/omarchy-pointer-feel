@@ -1,6 +1,6 @@
 # Architecture and product contract
 
-Status: **0.4.0 Omarchy, experimental Mac, and Win implemented**.
+Status: **1.0.0 Omarchy, experimental Mac, and Win implemented**.
 
 ## Product scope
 
@@ -25,7 +25,7 @@ Flat is an existing Omarchy/libinput option.
 Mac identifies its measured Sequoia 15.3.2 reference and exposes tracking 1–10,
 natural scrolling, and primary-button choice.
 
-## Current 0.4.0 implementation
+## Current 1.0.0 implementation
 
 ```text
 Omarchy bar and panel (QML)

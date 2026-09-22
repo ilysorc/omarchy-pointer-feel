@@ -2,7 +2,7 @@
 
 A vendor-neutral, English-language pointer profile panel for Omarchy/Hyprland.
 
-**Version 0.4.0:** Omarchy / Mac / Win switching, profile-specific settings,
+**Version 1.0.0:** Omarchy / Mac / Win switching, profile-specific settings,
 verified changes, 15-second trials, Keep/Revert, and session persistence.
 **Mac is an experimental Sequoia measured reference.**
 

@@ -1,6 +1,6 @@
 # Roadmap and acceptance criteria
 
-Current state on 2026-09-22: Pointer Feel 0.4.0 is locally validated and the GitHub
+Current state on 2026-09-22: Pointer Feel 1.0.0 is locally validated and the GitHub
 repository is private. The initial hosted CI passed; release and marketplace
 submission remain paused until the owner approves public distribution.
 See [publication readiness](PUBLISHING.md) and its submission draft. The owner approved
