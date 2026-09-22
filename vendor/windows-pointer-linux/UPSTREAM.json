@@ -1,0 +1,52 @@
+{
+  "repository": "https://github.com/junaga/windows-pointer-linux",
+  "revision": "0bdd644d420737a7aea506e252fc5e12db34c599",
+  "license": "BSD-3-Clause",
+  "changes": "Engine/replay/tests unchanged. Native adapter includes the documented Hyprland 0.56 compatibility patch; pointer math unchanged.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "6e32a6f6623073fc97f5d043c253e9ef566ac534ff438a2780f56abc0c740990"
+    },
+    {
+      "path": "src/engine.cpp",
+      "sha256": "698a09996ae6086e5414da23c84ca2f8c0156ffd99a6a5ba6ec8484c99c6950e"
+    },
+    {
+      "path": "include/windows_pointer/engine.hpp",
+      "sha256": "bfb4a1969ca0dd22af632c9796040cc4ce136ae04d8eff8a9f0f138aac809ff7"
+    },
+    {
+      "path": "tools/replay.cpp",
+      "sha256": "19583e3a2cdb615fbaa8e22e03a189edf3c6062782cfaaf8251d1c27274302c5"
+    },
+    {
+      "path": "tests/engine_test.cpp",
+      "sha256": "f4801b364ade52f89a2a66c7c78f0c2235fb031b3932f06e81ada87538884d3a"
+    },
+    {
+      "path": "tests/model_test.cpp",
+      "sha256": "537253e27ee40041b6afb7e300e49b0538345267175376a1455b5304389d299b"
+    },
+    {
+      "path": "tests/scenario_test.cpp",
+      "sha256": "056ae7ebd93b2c2db8a05b88a35bfa09598a6c1c49cbb2a680a315a623605512"
+    },
+    {
+      "path": "tests/reference_model.hpp",
+      "sha256": "fc6ddf3a5ce7a14b172015835ef6f00a50796c3800ee97cbdb23743dfd03ad54"
+    },
+    {
+      "path": "src/plugin.upstream.cpp",
+      "sha256": "a1068d20724e8e60021466497ccb344063497b16f1f9e50f00963b6332dcbac7"
+    },
+    {
+      "path": "src/plugin.cpp",
+      "sha256": "9eb925cf63475ff086a66173db4d45f12e1fb69616fecba4486ada7c08440557"
+    },
+    {
+      "path": "hyprland-0.56-compat.patch",
+      "sha256": "93718b5668c9e3835a2867fed07b74cf8e3ff991018522e035df7272ceca4ce5"
+    }
+  ]
+}

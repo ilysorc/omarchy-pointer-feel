@@ -1,0 +1,86 @@
+{
+  "repo": "INRIA/libpointing",
+  "commit": "ecb67da58145343c9fa64211d629730134fe74ae",
+  "license": "GPL-2.0-or-later",
+  "reference": "macOS Sequoia 15.3.2, 400 CPI, 125 Hz",
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "source_path": "LICENSE.md",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/LICENSE.md",
+      "sha256": "389043db2d2174c8f4f86e0ded8e71e0f2aab20bf12bcab1fcded6ab5923ef0a"
+    },
+    {
+      "path": "COPYING",
+      "source_path": "COPYING",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/COPYING",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "config.dict",
+      "source_path": "pointing-echomouse/darwin-24/config.dict",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/config.dict",
+      "sha256": "b5ce6780985e523038cc34023dff5ffad784b6db3316cfa8a385cedc7f885a4f"
+    },
+    {
+      "path": "f1.dat",
+      "source_path": "pointing-echomouse/darwin-24/f1.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f1.dat",
+      "sha256": "6236b47bebbf457c330b6f6a3d5993a78214a3af0e71e41ad79e6f2a9dadcea1"
+    },
+    {
+      "path": "f2.dat",
+      "source_path": "pointing-echomouse/darwin-24/f2.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f2.dat",
+      "sha256": "51cfcb59437e25ab50591b69b4ef334066b51bf102046e6b3c375f38a128ebd7"
+    },
+    {
+      "path": "f3.dat",
+      "source_path": "pointing-echomouse/darwin-24/f3.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f3.dat",
+      "sha256": "b919a474a1fd65cc0c74ee390b947246ececcfec435daa9898ea398bf731b8f7"
+    },
+    {
+      "path": "f4.dat",
+      "source_path": "pointing-echomouse/darwin-24/f4.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f4.dat",
+      "sha256": "a6378ee8c182cb406c3b27b0ae91d5afe9e430cb2180d2990e4001be445e2aa9"
+    },
+    {
+      "path": "f5.dat",
+      "source_path": "pointing-echomouse/darwin-24/f5.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f5.dat",
+      "sha256": "eed0346f1ff6e2008695cb7cb3c2ef833aec0f81498a9d9981eb71950cea7730"
+    },
+    {
+      "path": "f6.dat",
+      "source_path": "pointing-echomouse/darwin-24/f6.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f6.dat",
+      "sha256": "39695b416ec00d1147498beb157c35e1dbae0235d8b77eddd786967603cf1a2c"
+    },
+    {
+      "path": "f7.dat",
+      "source_path": "pointing-echomouse/darwin-24/f7.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f7.dat",
+      "sha256": "4bc8dfab958f2ca3ce0b37234576fbc59e5ab2c303e5818b231c84cc5f2b8aaa"
+    },
+    {
+      "path": "f8.dat",
+      "source_path": "pointing-echomouse/darwin-24/f8.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f8.dat",
+      "sha256": "6cc38f0475489678d33fbce867fac94e1173bf1876fce9757eae64138f66eec9"
+    },
+    {
+      "path": "f9.dat",
+      "source_path": "pointing-echomouse/darwin-24/f9.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f9.dat",
+      "sha256": "68b4b1626e7805f0198db6e30ca5a5260021b2f2263e84ce15ffb977ecd615c6"
+    },
+    {
+      "path": "f10.dat",
+      "source_path": "pointing-echomouse/darwin-24/f10.dat",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing-echomouse/darwin-24/f10.dat",
+      "sha256": "6fa350c0d5db396bfbf112e9aa636277cc0aad0297b4ae4f4f2988eb03609ffe"
+    }
+  ]
+}

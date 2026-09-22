@@ -1,0 +1,103 @@
+{
+  "checked_at": "2026-09-20",
+  "note": "Apple implementation files remain research-only. The Mac module vendors hash-pinned Sequoia measurement tables with GPL notices.",
+  "files": [
+    {
+      "repo": "apple-oss-distributions/IOHIDFamily",
+      "sha": "777ccd9698845aadf711e32d843c8c9b777431d9",
+      "path": "IOHIDEventSystemPlugIns/IOHIDAcceleration.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/IOHIDFamily/777ccd9698845aadf711e32d843c8c9b777431d9/IOHIDEventSystemPlugIns/IOHIDAcceleration.cpp",
+      "sha256": "5b55700a2b964b8519ae301070caf6d5c1e4dafaf13b35ff5e121a02dfbd467a",
+      "bytes": 5392
+    },
+    {
+      "repo": "apple-oss-distributions/IOHIDFamily",
+      "sha": "777ccd9698845aadf711e32d843c8c9b777431d9",
+      "path": "IOHIDEventSystemPlugIns/IOHIDAcceleration.hpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/IOHIDFamily/777ccd9698845aadf711e32d843c8c9b777431d9/IOHIDEventSystemPlugIns/IOHIDAcceleration.hpp",
+      "sha256": "86e7c98894e9b736545db0cf4e303897e1ad2cf806f9e2cc8cb9de24629aa13c",
+      "bytes": 3629
+    },
+    {
+      "repo": "apple-oss-distributions/IOHIDFamily",
+      "sha": "777ccd9698845aadf711e32d843c8c9b777431d9",
+      "path": "IOHIDEventSystemPlugIns/IOHIDAccelerationAlgorithm.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/IOHIDFamily/777ccd9698845aadf711e32d843c8c9b777431d9/IOHIDEventSystemPlugIns/IOHIDAccelerationAlgorithm.cpp",
+      "sha256": "f50a20f0320479a913b327110ee1b31a17ca184ea2b977200433a042a55db123",
+      "bytes": 20258
+    },
+    {
+      "repo": "apple-oss-distributions/IOHIDFamily",
+      "sha": "777ccd9698845aadf711e32d843c8c9b777431d9",
+      "path": "IOHIDEventSystemPlugIns/IOHIDAccelerationAlgorithm.hpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/IOHIDFamily/777ccd9698845aadf711e32d843c8c9b777431d9/IOHIDEventSystemPlugIns/IOHIDAccelerationAlgorithm.hpp",
+      "sha256": "e2d110dba7ede7062e900698b9848154c0d0d910d039b0c6c5c9192383fb4574",
+      "bytes": 3555
+    },
+    {
+      "repo": "apple-oss-distributions/IOHIDFamily",
+      "sha": "777ccd9698845aadf711e32d843c8c9b777431d9",
+      "path": "IOHIDEventSystemPlugIns/IOHIDPointerScrollFilter.cpp",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/IOHIDFamily/777ccd9698845aadf711e32d843c8c9b777431d9/IOHIDEventSystemPlugIns/IOHIDPointerScrollFilter.cpp",
+      "sha256": "ece234a0d58ce339babbdafb9d6c3668c60c7e3d8652844902fe17327bc777fe",
+      "bytes": 47934
+    },
+    {
+      "repo": "INRIA/libpointing",
+      "sha": "ecb67da58145343c9fa64211d629730134fe74ae",
+      "path": "pointing/transferfunctions/TransferFunction.cpp",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing/transferfunctions/TransferFunction.cpp",
+      "sha256": "2de7d58846bb4e9d54dd57df986131b4c19e92781a4a1995c53ce1eca0c5e74a",
+      "bytes": 7907
+    },
+    {
+      "repo": "INRIA/libpointing",
+      "sha": "ecb67da58145343c9fa64211d629730134fe74ae",
+      "path": "pointing/transferfunctions/Interpolation.cpp",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing/transferfunctions/Interpolation.cpp",
+      "sha256": "3fd64a3616a5876bb5582e6c3e5df140f833580cb5ffc246de128a7a6fb87dd2",
+      "bytes": 9065
+    },
+    {
+      "repo": "INRIA/libpointing",
+      "sha": "ecb67da58145343c9fa64211d629730134fe74ae",
+      "path": "pointing/transferfunctions/osx/osxSystemPointerAcceleration.cpp",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing/transferfunctions/osx/osxSystemPointerAcceleration.cpp",
+      "sha256": "c7e9e8f8a871296cc322ccb590ce59fd284a2b25ca23f56b67cb07f55feb53f4",
+      "bytes": 3022
+    },
+    {
+      "repo": "INRIA/libpointing",
+      "sha": "ecb67da58145343c9fa64211d629730134fe74ae",
+      "path": "pointing/transferfunctions/SigmoidFunction.cpp",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/pointing/transferfunctions/SigmoidFunction.cpp",
+      "sha256": "aa4329c8805a772b9650e38bd6e59e7660e09b1086a45cb1f388e28f4ffedff8",
+      "bytes": 4705
+    },
+    {
+      "repo": "INRIA/libpointing",
+      "sha": "ecb67da58145343c9fa64211d629730134fe74ae",
+      "path": "LICENSE.md",
+      "url": "https://raw.githubusercontent.com/INRIA/libpointing/ecb67da58145343c9fa64211d629730134fe74ae/LICENSE.md",
+      "sha256": "389043db2d2174c8f4f86e0ded8e71e0f2aab20bf12bcab1fcded6ab5923ef0a",
+      "bytes": 340
+    },
+    {
+      "repo": "hyprwm/Hyprland",
+      "sha": "efb50993780079460b0cbed1363e2166a2de1d9f",
+      "path": "src/managers/input/InputManager.cpp",
+      "url": "https://raw.githubusercontent.com/hyprwm/Hyprland/efb50993780079460b0cbed1363e2166a2de1d9f/src/managers/input/InputManager.cpp",
+      "sha256": "feedf32e2e3d23aeaed7a02ef4ab94be2d66f4b22873b3166026da1e9ece4765",
+      "bytes": 98845
+    },
+    {
+      "repo": "hyprwm/Hyprland",
+      "sha": "efb50993780079460b0cbed1363e2166a2de1d9f",
+      "path": "src/devices/IPointer.hpp",
+      "url": "https://raw.githubusercontent.com/hyprwm/Hyprland/efb50993780079460b0cbed1363e2166a2de1d9f/src/devices/IPointer.hpp",
+      "sha256": "bf4b2309526ca44ac30d2c3d3ad6a66cc7bf8d7a398b22a8fdde58c0f0ab1310",
+      "bytes": 3580
+    }
+  ],
+  "mac_reference_manifest": "../vendor/libpointing-sequoia/UPSTREAM.json"
+}

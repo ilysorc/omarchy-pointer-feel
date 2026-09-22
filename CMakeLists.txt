@@ -1,0 +1,60 @@
+cmake_minimum_required(VERSION 3.25)
+project(omarchy_mouse_style VERSION 0.4.0 LANGUAGES CXX)
+
+# Offline reference engines; the optional module requires matching Hyprland headers.
+set(WINDOWS_REFERENCE "${CMAKE_CURRENT_SOURCE_DIR}/vendor/windows-pointer-linux")
+add_library(mouse_style_windows STATIC "${WINDOWS_REFERENCE}/src/engine.cpp")
+target_include_directories(mouse_style_windows PUBLIC "${WINDOWS_REFERENCE}/include")
+target_compile_features(mouse_style_windows PUBLIC cxx_std_23)
+target_compile_options(mouse_style_windows PRIVATE -Wall -Wextra -Wpedantic)
+set_target_properties(mouse_style_windows PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+add_executable(mouse-style-replay "${WINDOWS_REFERENCE}/tools/replay.cpp")
+target_link_libraries(mouse-style-replay PRIVATE mouse_style_windows)
+
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+file(GLOB MAC_REFERENCE_INPUTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/vendor/libpointing-sequoia/*")
+add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/mac_tables.hpp"
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/generate-mac-tables.py" "${CMAKE_CURRENT_BINARY_DIR}/mac_tables.hpp"
+  DEPENDS tools/generate-mac-tables.py ${MAC_REFERENCE_INPUTS})
+add_library(mouse_style_mac STATIC src/mac/engine.cpp "${CMAKE_CURRENT_BINARY_DIR}/mac_tables.hpp")
+target_include_directories(mouse_style_mac PUBLIC src/mac PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
+target_compile_features(mouse_style_mac PUBLIC cxx_std_23)
+target_compile_options(mouse_style_mac PRIVATE -Wall -Wextra -Wpedantic)
+set_target_properties(mouse_style_mac PROPERTIES POSITION_INDEPENDENT_CODE ON)
+add_executable(mouse-style-mac-replay tools/mac-replay.cpp)
+target_link_libraries(mouse-style-mac-replay PRIVATE mouse_style_mac)
+
+option(MOUSE_STYLE_BUILD_PLUGIN "Build both Hyprland pointer modules" OFF)
+if(MOUSE_STYLE_BUILD_PLUGIN)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(HYPRLAND REQUIRED IMPORTED_TARGET hyprland)
+  add_library(windows-pointer-linux MODULE "${WINDOWS_REFERENCE}/src/plugin.cpp")
+  target_link_libraries(windows-pointer-linux PRIVATE mouse_style_windows PkgConfig::HYPRLAND)
+  target_compile_options(windows-pointer-linux PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_definitions(windows-pointer-linux PRIVATE WINDOWS_POINTER_VERSION="1.0.0")
+  set_target_properties(windows-pointer-linux PROPERTIES PREFIX "")
+  add_library(mouse-style-mac MODULE src/mac_plugin.cpp)
+  target_link_libraries(mouse-style-mac PRIVATE mouse_style_mac PkgConfig::HYPRLAND)
+  target_compile_options(mouse-style-mac PRIVATE -Wall -Wextra -Wpedantic)
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(mouse-style-mac PRIVATE -fno-gnu-unique)
+    target_compile_options(windows-pointer-linux PRIVATE -fno-gnu-unique)
+  endif()
+  set_target_properties(mouse-style-mac PROPERTIES PREFIX "")
+endif()
+
+include(CTest)
+if(BUILD_TESTING)
+  find_package(GTest REQUIRED)
+  add_executable(windows_reference_tests
+    "${WINDOWS_REFERENCE}/tests/engine_test.cpp"
+    "${WINDOWS_REFERENCE}/tests/model_test.cpp"
+    "${WINDOWS_REFERENCE}/tests/scenario_test.cpp")
+  target_link_libraries(windows_reference_tests PRIVATE mouse_style_windows GTest::gtest_main)
+  include(GoogleTest)
+  gtest_discover_tests(windows_reference_tests)
+  add_executable(mac_reference_tests tests/mac/engine_test.cpp)
+  target_link_libraries(mac_reference_tests PRIVATE mouse_style_mac GTest::gtest_main)
+  gtest_discover_tests(mac_reference_tests)
+endif()

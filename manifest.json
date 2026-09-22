@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "ilysorc.mouse-style",
+  "name": "Mouse Style",
+  "version": "0.4.0",
+  "license": "GPL-2.0-or-later",
+  "author": "ilysorc",
+  "description": "Switch between native Omarchy, Mac reference, and Windows pointer behavior, with verified settings and timed trials.",
+  "kinds": ["bar-widget"],
+  "entryPoints": { "barWidget": "BarWidget.qml" },
+  "barWidget": {
+    "displayName": "Mouse Style",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}

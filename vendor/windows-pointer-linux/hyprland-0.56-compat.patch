@@ -1,0 +1,29 @@
+diff --git i/src/plugin.cpp w/src/plugin.cpp
+index 0ab7323..1747701 100644
+--- i/src/plugin.cpp
++++ w/src/plugin.cpp
+@@ -1,12 +1,13 @@
+ #include <windows_pointer/engine.hpp>
+ 
+-#include <hyprland/src/Compositor.hpp>
+ #include <hyprland/src/config/ConfigManager.hpp>
+ #include <hyprland/src/config/values/types/BoolValue.hpp>
+ #include <hyprland/src/config/values/types/StringValue.hpp>
+ #include <hyprland/src/devices/IPointer.hpp>
+ #include <hyprland/src/event/EventBus.hpp>
+-#include <hyprland/src/helpers/Monitor.hpp>
++#include <hyprland/src/output/Monitor.hpp>
++#include <hyprland/src/pointer/PointerManager.hpp>
++#include <hyprland/src/state/MonitorState.hpp>
+ #include <hyprland/src/managers/input/InputManager.hpp>
+ #include <hyprland/src/plugins/PluginAPI.hpp>
+ 
+@@ -133,7 +134,7 @@ struct Display {
+ };
+ 
+ [[nodiscard]] auto currentDisplay() -> Display {
+-    const auto monitor = g_pCompositor->getMonitorFromCursor();
++    const auto monitor = State::monitorState()->query().vec(Pointer::mgr()->position()).run();
+     if (!monitor)
+         return {};
+ 
