@@ -49,6 +49,10 @@ A separate clean Omarchy OS/VM install, wider mouse/monitor coverage, and future
 Hyprland versions are not verified. Mac uses measured Sequoia tables and does
 not claim exact modern macOS parity. These limits are documented in the README.
 
+On 2026-09-22, the owner chose to skip the recommended clean Omarchy OS/VM
+installation test for 1.0.0. It is not a release prerequisite. Its status remains
+untested; this decision does not count as additional installation evidence.
+
 ## Marketplace preflight
 
 For the 1.0.0 preparation on 2026-09-22, the marketplace's static analysis

@@ -3,6 +3,8 @@
 Current state on 2026-09-22: Pointer Feel 1.0.0 is locally validated and the GitHub
 repository is private. The initial hosted CI passed; release and marketplace
 submission remain paused until the owner approves public distribution.
+The owner waived the recommended clean OS/VM installation test for 1.0.0 on
+2026-09-22; that environment remains unverified and is not a release gate.
 See [publication readiness](PUBLISHING.md) and its submission draft. The owner approved
 the current overall experience after the profile, reset, and bar-label changes.
 That feedback is separate from independent algorithm equivalence, hardware
