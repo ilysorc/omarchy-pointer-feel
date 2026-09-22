@@ -1,11 +1,11 @@
-# Marketplace submission draft
+# Marketplace submission record
 
 Title: **[Plugin]: Pointer Feel**
 
-The owner authorized publication and marketplace submission on 2026-09-22.
-Verify public access and the checklist before sending. The issue body starts at
-`Repository URL`; do not include this preamble in the issue. Record the resulting
-issue URL here after submission.
+Submitted on 2026-09-22 with owner authorization:
+[omacom/omarchy-plugin-marketplace#8177](https://github.com/omacom/omarchy-plugin-marketplace/issues/8177).
+Public access and the checklist were verified before sending. The submitted body
+starts at `Repository URL`; this preamble is not part of the issue.
 
 ### Repository URL
 
@@ -49,10 +49,12 @@ limits are recorded in docs/PUBLISHING.md. The local static preflight reported
 no findings and the installer/package-manager/privilege capabilities; the
 official scan and maintainer review remain pending.
 
+Source release: [Pointer Feel 1.0.0](https://github.com/ilysorc/omarchy-pointer-feel/releases/tag/v1.0.0).
+
 ### Submission checklist
 
-- [ ] The repository is public and contains installation and removal instructions.
-- [ ] I have documented the plugin license and any external dependencies.
-- [ ] I confirm that I own or have permission to submit this plugin and its preview assets.
-- [ ] The plugin does not overwrite user configuration without explicit consent.
-- [ ] I understand that approval is for listing and is not a security review.
+- [x] The repository is public and contains installation and removal instructions.
+- [x] I have documented the plugin license and any external dependencies.
+- [x] I confirm that I own or have permission to submit this plugin and its preview assets.
+- [x] The plugin does not overwrite user configuration without explicit consent.
+- [x] I understand that approval is for listing and is not a security review.

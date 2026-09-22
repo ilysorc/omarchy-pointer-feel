@@ -7,7 +7,7 @@ Local validation and a GitHub release do not imply marketplace approval.
 
 - Repository: `https://github.com/ilysorc/omarchy-pointer-feel`.
 - Permanent plugin ID: `ilysorc.pointer-feel`; display name: Pointer Feel.
-- Planned first release: `v1.0.0`, a regular GitHub release. The Mac profile
+- First release: `v1.0.0`, a regular GitHub release. The Mac profile
   remains experimental; the application version does not expand hardware or
   compositor support.
 - Marketplace category: Hardware. Tags: `bar`, `hyprland`, `quickshell`.
@@ -41,7 +41,7 @@ separate maintainer decision.
 - `tools/check_release.py` checks pinned vendor hashes, version consistency,
   entry points, preview limits, source archive/checksum and extracted bundle
   identity. Native binaries and private research/build caches are excluded.
-- The hosted [Checks run for the final code change](https://github.com/ilysorc/omarchy-pointer-feel/actions/runs/35767876536)
+- The hosted [Checks run for the released commit](https://github.com/ilysorc/omarchy-pointer-feel/actions/runs/35769582164)
   passed. Each later candidate must pass its own run before release. The workflow
   never uses personal self-hosted runners; desktop/QML checks run separately.
 
@@ -91,8 +91,17 @@ does not automatically execute third-party install hooks.
 6. A maintainer finalizes setup labels and applies `approved-and-verified` after
    reviewing the exact commit. Verify that the listing actually appears.
 
-Record the release and marketplace issue URLs after publication. A submitted
-issue is not an approved listing.
+## Publication record
+
+- The repository became public on 2026-09-22; anonymous manifest access passed.
+- [Pointer Feel 1.0.0](https://github.com/ilysorc/omarchy-pointer-feel/releases/tag/v1.0.0)
+  was published from `0a5112586fccb3009b662fa8ce72319f0cc5c161`, with a source
+  archive and SHA-256 file. Anonymous downloads matched the tested local archive
+  and the published checksum.
+- [Marketplace submission #8177](https://github.com/omacom/omarchy-plugin-marketplace/issues/8177)
+  was opened with category Hardware, tags bar/hyprland/quickshell and the
+  manual-setup request. Automated validation and maintainer review follow there.
+  A submitted issue is not an approved listing.
 
 Primary instructions: [Publish](https://plugins.omarchy.org/publish.html),
 [Develop](https://plugins.omarchy.org/develop.html), and the marketplace's

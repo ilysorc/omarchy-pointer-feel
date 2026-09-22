@@ -1,12 +1,12 @@
 # Roadmap and acceptance criteria
 
-Current state on 2026-09-22: Pointer Feel 1.0.0 is locally validated. The owner
-authorized public repository access, the release and marketplace submission.
-The latest code-changing commit passed hosted CI; marketplace approval requires
-an independent maintainer review.
+Current state on 2026-09-22: Pointer Feel 1.0.0 is published in the public GitHub
+repository. The released commit passed hosted CI. Marketplace submission
+[#8177](https://github.com/omacom/omarchy-plugin-marketplace/issues/8177) is open;
+listing approval requires an independent maintainer review.
 The owner waived the recommended clean OS/VM installation test for 1.0.0 on
 2026-09-22; that environment remains unverified and is not a release gate.
-See [publication readiness](PUBLISHING.md) and its submission draft. The owner approved
+See [publication readiness](PUBLISHING.md) and its submission record. The owner approved
 the current overall experience after the profile, reset, and bar-label changes.
 That feedback is separate from independent algorithm equivalence, hardware
 coverage, and the Mac-specific feel evaluation described below.
@@ -103,7 +103,7 @@ separate follow-up; the native engine behavior must remain unchanged.
   and actual desktop installation/idempotency passed. See [details](INSTALLATION.md).
 - Installation readiness is independent of live profile transitions, including
   trial replacement and Keep; normal tuning no longer opens the repair panel.
-- The repository and release assets are prepared; publication was authorized on 2026-09-22.
+- The repository and 1.0.0 release became public on 2026-09-22; marketplace submission #8177 is open.
 
 ## Completed: publication preparation
 
@@ -164,6 +164,6 @@ Keep microbenchmarks separate from end-to-end latency claims. Broader user tests
 do not substitute for Windows/macOS reference comparisons.
 
 Unified build/install/update/uninstall is implemented in 0.4.0. Validation is
-recorded in docs/INSTALLATION.md. Public release is authorized and marketplace
-submission has not been created. Broader compositor/hardware coverage remains
+recorded in docs/INSTALLATION.md. Version 1.0.0 is published; marketplace
+submission #8177 awaits review. Broader compositor/hardware coverage remains
 separate from validating this installation on the current stack.
