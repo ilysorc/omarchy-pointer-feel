@@ -104,6 +104,8 @@ separate follow-up; the native engine behavior must remain unchanged.
 ## Completed: publication preparation
 
 - Original Flow bar icon, active OS header and current panel preview.
+- Hidden bar label mode keeps only the clickable Flow icon and trial highlight,
+  with the same independent persistence as Letter/Code.
 - 70 Python tests, including the Git-managed installation/update boundary.
 - Hosted CI workflow, QML lint helper and source-archive/provenance checks.
 - Fresh native build, 24 native tests, 1,280 samples and actual QML checks passed.

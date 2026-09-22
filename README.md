@@ -15,7 +15,9 @@ The original **Flow** icon (pointer and motion curve) follows the bar's theme
 color and scale, independently of the icon font.
 The panel header shows the active profile's Omarchy, Apple, or Windows logo
 beside **Mouse Style**, including during trials and after reverting.
-**Bar label** offers **Letter** (O / M / W) or **Code** (OMA / MAC / WIN).
+**Bar label** offers **Letter** (O / M / W), **Code** (OMA / MAC / WIN), or
+**Hidden** (icon only). Hidden keeps the widget clickable and the profile tooltip
+available; a trial still highlights the icon. Required setup still shows **Setup**.
 Code is the default. This appearance preference saves immediately and survives
 shell restarts and profile changes; it does not need Keep.
 

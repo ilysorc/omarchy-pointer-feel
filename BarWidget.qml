@@ -23,7 +23,7 @@ Ui.Panel {
         id: button
         anchors.fill: parent
         bar: root.bar
-        text: setup.ready ? state.shortLabel + (state.trial ? " ·" : "") : "Setup"
+        text: setup.ready ? state.barLabel : "Setup"
         active: state.trial
         tooltipText: "Mouse Style · " + (state.profile === "win" ? "Windows" : state.profile === "mac" ? "Mac (experimental)" : state.profile === "omarchy" ? "Omarchy" : "Reading status")
         onPressed: function(mouseButton) {

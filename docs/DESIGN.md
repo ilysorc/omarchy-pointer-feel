@@ -97,7 +97,9 @@ unknown state shows Flow with "Unverified" rather than retaining a stale OS logo
 The header follows theme colors and type sizing independently of the bar label.
 
 Letter displays O/M/W; Code displays OMA/MAC/WIN and is the default for existing
-installations. `mouse-style bar-label letter|code` writes `ui.json` atomically under
+installations. Hidden leaves only the Flow icon, with no label spacing or trial
+dot; the widget keeps its tooltip, click target and active trial highlight. Setup
+still shows its label when required. `mouse-style bar-label letter|code|hidden` writes `ui.json` atomically under
 the controller lock and returns refreshed status. The frontend reads `ui.bar_label`.
 Appearance is persisted immediately, separately from pointer preferences. It does
 not reload the motion engine, start/confirm a trial, or renew its timer. Profile

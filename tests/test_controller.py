@@ -69,31 +69,32 @@ class Transactions(unittest.TestCase):
 
     def test_label_preference_persists_without_changing_mouse_settings(self):
         self.assertEqual(self.controller.status()["ui"], {"bar_label": "code"})
-        self.controller.set_bar_label("letter")
-        reloaded = Controller(Path(self.temp.name), self.backend)
-        self.assertEqual(reloaded.status()["ui"], {"bar_label": "letter"})
-        self.assertEqual(reloaded.confirmed(), WIN)
-        self.assertEqual(self.backend.applications, [])
-        self.assertIsNone(reloaded.pending())
+        for mode in ("letter", "code", "hidden"):
+            self.controller.set_bar_label(mode)
+            reloaded = Controller(Path(self.temp.name), self.backend)
+            self.assertEqual(reloaded.status()["ui"], {"bar_label": mode})
+            self.assertEqual(reloaded.confirmed(), WIN)
+            self.assertEqual(self.backend.applications, [])
+            self.assertIsNone(reloaded.pending())
         with self.assertRaises(ControlError):
             reloaded.set_bar_label("invalid")
-        self.assertEqual(reloaded.ui_settings()["bar_label"], "letter")
+        self.assertEqual(reloaded.ui_settings()["bar_label"], "hidden")
 
     def test_label_change_does_not_commit_or_extend_trial_and_survives_resets(self):
         token = self.preview("mac", mac={"tracking": 9})["preview"]["token"]
         pending = self.controller.pending()
         count = len(self.backend.applications)
-        self.controller.set_bar_label("letter")
+        self.controller.set_bar_label("hidden")
         self.assertEqual(self.controller.pending(), pending)
         self.assertEqual(self.controller.confirmed(), WIN)
         self.assertEqual(len(self.backend.applications), count)
         result = self.preview("mac", defaults=True, replace_token=token)
         self.controller.revert(result["preview"]["token"])
-        self.assertEqual(self.controller.ui_settings()["bar_label"], "letter")
+        self.assertEqual(self.controller.ui_settings()["bar_label"], "hidden")
         token = self.preview("omarchy")["preview"]["token"]
         self.controller.confirm(token)
         self.controller.restore()
-        self.assertEqual(self.controller.ui_settings()["bar_label"], "letter")
+        self.assertEqual(self.controller.ui_settings()["bar_label"], "hidden")
 
     def test_defaults_reset_only_selected_profile_and_keep_persists(self):
         changed = deepcopy(WIN)

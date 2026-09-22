@@ -21,9 +21,18 @@ Window {
     id: root
     visible: true
     width: 420; height: 900
+    property int barClicks: 0
     Item { id: anchor }
     PointerState { id: pointer; panelOpen: true }
     Panel { id: panel; anchorItem: anchor; bar: null; pointerState: pointer }
+    FlowButton {
+        id: barButton
+        anchors.bottom: parent.bottom
+        bar: null
+        text: pointer.barLabel
+        active: pointer.trial
+        onPressed: root.barClicks++
+    }
     TestCase {
         id: test
         name: "DirectSettings"
@@ -68,14 +77,28 @@ Window {
             click("labelLetter")
             compare(pointer.shortLabel, "W")
             verify(!pointer.trial, "label change started a pointer trial")
+            var letterWidth = barButton.implicitWidth
+            click("labelHidden")
+            compare(pointer.shortLabel, "")
+            compare(barButton.text, "")
+            verify(control("labelHidden").active)
+            tryVerify(function() { return barButton.implicitWidth < letterWidth })
+            verify(!findChild(barButton, "profileLabel").visible)
+            verify(findChild(barButton, "flowIcon").visible)
+            mouseClick(barButton)
+            compare(root.barClicks, 1)
+            verify(!pointer.trial, "hiding the label started a pointer trial")
             // Input accepted during polling, with no transient loss of draft values.
             pointer.refresh()
             click("macTab")
             compare(pointer.profile, "mac")
-            compare(pointer.shortLabel, "M")
+            compare(pointer.shortLabel, "")
+            compare(barButton.text, "")
+            verify(barButton.active, "hidden trials must still highlight the icon")
             var labelTrialToken = pointer.snapshot.preview.token
             click("labelCode")
             compare(pointer.shortLabel, "MAC")
+            tryVerify(function() { return findChild(barButton, "profileLabel").visible })
             compare(pointer.snapshot.preview.token, labelTrialToken)
             click("labelLetter")
             compare(pointer.shortLabel, "M")
@@ -141,6 +164,10 @@ Window {
             click("labelCode")
             compare(pointer.shortLabel, "WIN")
             verify(!pointer.trial)
+            click("labelHidden")
+            pointer.refresh(); ready()
+            compare(pointer.labelStyle, "hidden")
+            compare(barButton.text, "")
             console.log("PANEL PASS")
         }
     }
@@ -189,7 +216,7 @@ if args[0] == 'preview':
         settings[key] = value
     data['preview'] = {'token': str(data['serial']), 'seconds': 15}
 elif args[0] == 'bar-label':
-    assert args[1] in ('letter', 'code')
+    assert args[1] in ('letter', 'code', 'hidden')
     data['ui'] = {'bar_label': args[1]}
 elif args[0] in ('confirm', 'revert'):
     assert args[1] == data['preview']['token']
@@ -205,7 +232,7 @@ def main():
     source = Path(__file__).resolve().parents[1]
     with tempfile.TemporaryDirectory(prefix='mouse-style-panel-') as temp:
         root = Path(temp)
-        for name in ('Panel.qml', 'PointerState.qml', 'ProfileHeader.qml', 'FlowIcon.qml'):
+        for name in ('Panel.qml', 'PointerState.qml', 'ProfileHeader.qml', 'FlowIcon.qml', 'FlowButton.qml'):
             shutil.copyfile(source / name, root / name)
         # PanelWindow requires a real compositor; replace only its surface shell.
         # All project handlers, Controls.Slider and Omarchy Button remain real.
@@ -258,7 +285,7 @@ Item {
         assert len(edits) == 15, edits
         assert [cmd[1] for cmd in edits if "--defaults" in cmd] == ["win", "mac", "omarchy"], edits
         assert all('--replace-token' in cmd for cmd in edits[1:-1]), edits
-        print('PASS: actual Mac/Win/Omarchy controls apply on release/click, tune during trials, retain values across polling/style switches, profile defaults reset independently, Letter/Code switches persist across styles/trials, and Keep/Revert work.')
+        print('PASS: actual Mac/Win/Omarchy controls, polling, defaults and Keep/Revert; Letter/Code/Hidden persist across styles/trials; Hidden keeps a compact clickable icon and trial highlight without label text.')
     return 0
 
 

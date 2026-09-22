@@ -19,7 +19,8 @@ Item {
     readonly property string profile: snapshot ? snapshot.profile : "unknown"
     readonly property string labelStyle: snapshot && snapshot.ui ? snapshot.ui.bar_label : "code"
     readonly property string codeLabel: profile === "win" ? "WIN" : profile === "mac" ? "MAC" : profile === "omarchy" ? "OMA" : "?"
-    readonly property string shortLabel: labelStyle === "letter" ? codeLabel.charAt(0) : codeLabel
+    readonly property string shortLabel: labelStyle === "hidden" ? "" : labelStyle === "letter" ? codeLabel.charAt(0) : codeLabel
+    readonly property string barLabel: shortLabel ? shortLabel + (trial ? " ·" : "") : ""
 
     function run(args) {
         if (!operational) return

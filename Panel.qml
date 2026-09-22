@@ -331,6 +331,13 @@ Ui.KeyboardPanel {
                     enabled: !root.locked
                     onClicked: if (!active) root.pointerState.setBarLabel("code")
                 }
+                Ui.Button {
+                    objectName: "labelHidden"
+                    text: "Hidden"; bordered: true; focusable: true
+                    active: root.pointerState.labelStyle === "hidden"
+                    enabled: !root.locked
+                    onClicked: if (!active) root.pointerState.setBarLabel("hidden")
+                }
             }
             Label { text: "Saved immediately."; opacity: 0.65; font.pixelSize: root.fontStyle.caption }
             Ui.PanelSeparator {}

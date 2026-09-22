@@ -269,13 +269,13 @@ class Controller:
 
     def ui_settings(self):
         settings = read_json(self.ui_file) if self.ui_file.exists() else {"bar_label": "code"}
-        if not isinstance(settings, dict) or settings.get("bar_label") not in ("letter", "code"):
-            raise ControlError("Bar label must be Letter or Code.")
+        if not isinstance(settings, dict) or settings.get("bar_label") not in ("letter", "code", "hidden"):
+            raise ControlError("Bar label must be Letter, Code, or Hidden.")
         return settings
 
     def set_bar_label(self, mode):
-        if mode not in ("letter", "code"):
-            raise ControlError("Bar label must be Letter or Code.")
+        if mode not in ("letter", "code", "hidden"):
+            raise ControlError("Bar label must be Letter, Code, or Hidden.")
         settings = self.ui_settings()
         settings["bar_label"] = mode
         write_json(self.ui_file, settings)
@@ -477,7 +477,7 @@ def main():
     subs = parser.add_subparsers(dest="command", required=True)
     subs.add_parser("status")
     subs.add_parser("restore")
-    subs.add_parser("bar-label").add_argument("mode", choices=("letter", "code"))
+    subs.add_parser("bar-label").add_argument("mode", choices=("letter", "code", "hidden"))
     trial = subs.add_parser("preview")
     trial.add_argument("profile", choices=("win", "mac", "omarchy", "default"))
     trial.add_argument("--speed", type=int)
